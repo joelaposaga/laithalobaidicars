@@ -2,22 +2,13 @@ jQuery(function($){
 
 	$(document).ready(function() {
 		
-		/*$('#car-demon-search-cars div').each(function(){
-			$(this).html($(this).html().replace(/&nbsp;/gi,''));
-		});*/
+		/* car demon form */
 
-		/* Change select label */
-		/*$('#car-demon-search-cars select[name="search_condition"] option').first().html('Car Status');
-		$('#car-demon-search-cars select[name="search_make"] option').first().html('Car Make');
-		$('#car-demon-search-cars select[name="search_year"] option').first().html('Year');
-		$('#car-demon-search-cars select[name="search_model"] option').first().html('Model');
-		$('#car-demon-search-cars select[name="search_dropdown_Min_price"] option').first().html('Min Price');
-		$('#car-demon-search-cars select[name="search_dropdown_Max_price"] option').first().html('Max Price');
-		$('#car-demon-search-cars select[name="search_dropdown_body"] option').first().html('Car Type');*/
-
-		/*$('#car-demon-search-cars select[name="search_condition"] option').first(function(){
-			console.log($(this).html());
-		});*/
+		/* remove the word all in car demon search form */
+		$('.cdsf_item .selectBox .selected').each(function(){
+			var selfText = $(this).html();
+			$(this).html(selfText.replace('ALL', ''));
+		});
 
 
 		$('#testimonial_home').slick({

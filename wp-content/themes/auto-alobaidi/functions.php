@@ -497,7 +497,6 @@ remove_filter('the_content', 'wpautop');
 
 /* car demon filters */
 
-
 /**
  * Implement the Custom Header feature.
  */

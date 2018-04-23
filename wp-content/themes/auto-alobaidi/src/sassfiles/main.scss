@@ -21,6 +21,7 @@ iframe {
 	top: 0;
 	bottom: 0;
 	padding: 15px;
+	overflow-y: auto;
 
 	.lao_lsb_container {
 		> div {
@@ -29,72 +30,6 @@ iframe {
 				margin-top: 20%;
     			margin-bottom: 20%;
 			}
-
-			/* &:nth-child(2) {
-				#car-demon-searchr1c1.search_header, #car-demon-searchr2c1.search_header_logo, #advanced_search.advanced_search, #car-demon-searchr7c1.search_trans, #car-demon-searchr7c2.search_mileage {
-					display: none;
-				}
-
-				.search_left, .search_right, .search_min_price, .search_max_price, .search_trans, .search_mileage, .search_body {
-					> div {
-						&:first-child {
-							display: none;
-						}
-					}
-				}
-
-				> h2 {
-					color: #fff;
-					font-weight: 700;
-					text-transform: uppercase;
-					font-size: 1em;
-					text-align: center;
-					margin-bottom: 30px;
-				}
-
-				#car-demon-search-cars {
-					select {
-						margin-bottom: 15px;
-						background-color: transparent;
-						border: 1px solid #fff;
-						border-radius: 0px;
-						color: #fff;
-						appearance: none;
-						background-image: url('../images/down.png');
-						background-repeat: no-repeat;
-						padding: 7px 30px 7px 10px;
-						background-position: 95% 50%;
-						font-size: 0.9em;
-						text-transform: uppercase;
-
-						&::-ms-expand { 
-							display: none;
-						}
-
-						&:focus {
-							background-color: #000;
-						}
-					}
-					input[type="submit"] {
-						margin: 0 !important;
-						margin-top: 30px !important;
-						width: 100%;
-						font-weight: 700;
-						text-transform: uppercase;
-
-						border: 1px solid #ff0000;
-						background-color: transparent;
-						color: #ff0000;
-						padding: 10px;
-						font-size: 1.1em;
-
-						&:hover {
-							background: red !important;
-							color: #fff;
-						}
-					}
-				}
-			} */
 
 			&:nth-child(3) {
 				ul {
@@ -155,6 +90,60 @@ iframe {
 		}
 	}
 
+}
+
+.lao_ls_search {
+	.cdsf_item {
+		[id^="label_"] {
+			color: #fff;
+			text-transform: uppercase;
+			font-size: .7em;
+			font-weight: 600;
+			display: none;
+		}
+		&.cd_hide {
+			display: none;
+		}
+		input[type="text"] {
+			display: none;
+		}
+		.selectBox {
+			.selectOptions {
+				display: none;
+				.apply_hide {
+					display: none !important;
+				}
+				.selectOption {
+					display: table;
+					width: 100%;
+					font-size: 0.9em;
+					background-color: #ff0000;
+					text-transform: uppercase;
+					line-height: 1.5em;
+					padding: 7px 10px;
+				}
+			}
+			.cdsf_apply, .cdsf_apply_cancel {
+				display: none !important;
+			}
+			.selected {
+				color: red;
+				border: 1px solid red;
+				line-height: 1.5;
+				height: auto;
+				padding: 7px 30px 7px 10px;
+				font-size: 0.9em;
+				width: 100%;
+				font-weight: 600;
+			}
+			.selectArrow {
+				position: absolute;
+				right: 20px;
+				color: #ff0000;
+				line-height: 2.3;
+			}
+		}
+	}
 }
 
 .lao_right_sidebar {
