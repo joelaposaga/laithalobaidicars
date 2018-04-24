@@ -93,55 +93,64 @@ iframe {
 }
 
 .lao_ls_search {
+	.cd_hide {
+		display: none !important;
+	}
+
 	.cdsf_item {
+		margin-bottom: 15px;
+
 		[id^="label_"] {
-			color: #fff;
-			text-transform: uppercase;
-			font-size: .7em;
-			font-weight: 600;
 			display: none;
 		}
-		&.cd_hide {
-			display: none;
+		#label_price_range {
+			display: block;
 		}
 		input[type="text"] {
 			display: none;
+			&#price_range {
+				display: block;
+			}
 		}
 		.selectBox {
-			.selectOptions {
-				display: none;
-				.apply_hide {
-					display: none !important;
-				}
-				.selectOption {
-					display: table;
-					width: 100%;
-					font-size: 0.9em;
-					background-color: #ff0000;
-					text-transform: uppercase;
-					line-height: 1.5em;
-					padding: 7px 10px;
-				}
-			}
-			.cdsf_apply, .cdsf_apply_cancel {
-				display: none !important;
-			}
+			position: relative;
+    		height: 37px;
 			.selected {
-				color: red;
 				border: 1px solid red;
-				line-height: 1.5;
-				height: auto;
-				padding: 7px 30px 7px 10px;
-				font-size: 0.9em;
 				width: 100%;
-				font-weight: 600;
+				height: auto;
+				padding: 7px 10px;
+				color: #ff0000;
+				font-weight: 700;
+				font-size: 0.9em;
+				line-height: 1.5;
+				user-select: none;
+				cursor: pointer;
 			}
 			.selectArrow {
-				position: absolute;
-				right: 20px;
-				color: #ff0000;
+				margin-left: -20px;
 				line-height: 2.3;
+				display: inline-block;
+				color: #ff0000;
 			}
+			.selectOptions {
+				z-index: 99;
+				position: absolute;
+				display: none;
+				min-width: 170px;
+				.selectOption {
+					display: block;
+					background-color: #fff;
+					font-size: 0.9em;
+					padding: 7px 10px;
+					&.apply_hide {
+						display: none !important;
+					}
+				}
+			}
+		}
+		[class^="cdsf_apply"] {
+			display: none;
 		}
 	}
 }

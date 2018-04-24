@@ -10,7 +10,6 @@ jQuery(function($){
 			$(this).html(selfText.replace('ALL', ''));
 		});
 
-
 		$('#testimonial_home').slick({
 			infinite: true,
 			slidesToShow: 3,
@@ -31,6 +30,14 @@ jQuery(function($){
 			autoplaySpeed: 2000,
 		});
 
+	});
+
+	$(document).mouseup(function (e){
+		var container = $(".selectBox .selectOptions");
+
+		if (!container.is(e.target) && container.has(e.target).length === 0){
+			container.css({'display':'none'});
+		}
 	});
 
 });
