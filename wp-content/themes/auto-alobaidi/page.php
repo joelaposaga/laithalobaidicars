@@ -17,26 +17,21 @@
 
 get_header(); ?>
 
-<div class="wrap">
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div class="lao_page">
+	<?php
+		while ( have_posts() ) :
+			the_post();
 
-			<?php
-			while ( have_posts() ) :
-				the_post();
-
+			if (is_page( 'car-stocks' )) {
+				get_template_part( 'template-parts/page/content', 'car-stocks-listing' );
+			} else {
 				get_template_part( 'template-parts/page/content', 'page' );
+			}
+			
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+		endwhile;
+	?>
 
-			endwhile; // End of the loop.
-			?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
 </div><!-- .wrap -->
 
 <?php

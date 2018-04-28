@@ -19,8 +19,8 @@ function twentyseventeen_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
-
 	add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
+	add_image_size( 'car_thumb_img', 450, 286, true );
 
 	// Set the default content width.
 	$GLOBALS['content_width'] = 525;
@@ -496,6 +496,365 @@ add_filter( 'widget_tag_cloud_args', 'twentyseventeen_widget_tag_cloud_args' );
 remove_filter('the_content', 'wpautop');
 
 /* car demon filters */
+
+function lao_car_list_car_demon($content,$post_id) {
+	$cars = cd_get_car( $post_id );
+
+	$content = '
+		<div class="car_lists_item">
+			<div class="image">
+				<a href="'. $cars['link'] .'">
+					<div class="inner_image">
+						<img src="'. $cars['main_photo'] .'">
+					</div>
+				</a>
+			</div>
+			<div class="content">
+				<div class="top">
+					<a href="'. $cars['link'] .'">'. $cars['post_title'] .'</a>
+					<span>AED '. number_format($cars['price']) .'</span>
+				</div>
+				<div class="middle">
+					<div>
+						<span>Mileage</span>
+						<p>'. $cars['mileage'] .'</p>
+					</div>
+					<div>
+						<span>Engine</span>
+						<p>'. $cars['engine'] .'</p>
+					</div>
+					<div>
+						<span>Color</span>
+						<p>'. $cars['exterior_color'] .'</p>
+					</div>
+					<div>
+						<span>Stock no.</span>
+						<p>#'. $cars['stock_number'] .'</p>
+					</div>
+				</div>
+				<div class="bottom">
+					<ul>
+						<li><a href="'. $cars['link'] .'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> View Details</a></li>
+						<li><a href=""><i class="fa fa-question-circle" aria-hidden="true"></i> Inquire Now</a></li>
+						<li><a href=""><i class="fa fa-share-alt" aria-hidden="true"></i> Share Vehicle</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	';
+
+	return $content;
+}
+add_filter('cd_srp_filter', 'lao_car_list_car_demon', 10, 2);
+
+
+function lao_search_filter( $sort ) {
+    $sort = '<div class="car_lists_filter"><h3>Cars For Sale</h3>' . $sort . '</div>';
+    return $sort;
+}
+add_filter( 'cd_sort_filter', 'lao_search_filter', 10, 1 );
+
+function lao_results_found_filter( $content ) {
+    $content = '<div class="lao_car_lists_found">' . $content . '</div>';
+    return $content;
+}
+add_filter( 'cd_results_found_filter', 'lao_results_found_filter', 10, 1);
+
+function lao_searched_by_func( $searched_by ) {
+    $searched_by = str_replace( '<span class="search_by_comma">,</span>', '', $searched_by );
+    return $searched_by;
+}
+add_filter( 'cd_searched_by_filter', 'lao_searched_by_func', 10, 1 );
+
+function lao_bottom_navigation( $nav, $position, $search_query ) {
+    if ( 'bottom' === $position ) {
+        $nav = '<div class="lao_bottom_navigation">' . $nav . '</div>';
+    }
+    return $nav;
+}
+add_filter( 'cd_nav_filter', 'lao_bottom_navigation', 10, 3 );
+
+function lao_vdp( $content, $post_id ) {
+	$galleryHolder = '';
+	$specsHolder = '';
+	$convenienceHolder = '';
+	$comfortHolder = '';
+	$entertainmentHolder = '';
+	$safetyHolder = '';
+
+	$specsArrayHolder = array();
+	$convenienceArrayHolder = array();
+	$comfortArrayholder = array();
+	$entertainmentArrayholder = array();
+	$safetyArrayholder = array();
+
+	$singleCars = cd_get_car( $post_id );
+
+	$getGalleryImages = get_post_meta( $post_id, '_images_value', true );
+	$galleryImages = explode(',', $getGalleryImages);
+
+	$thumbnails = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' =>'image', 'orderby' => 'menu_order ID', 'order' => 'DESC' ) );
+
+	if (!empty($thumbnails)) {
+		foreach ($thumbnails as $thumbnail) {
+			$galleryHolder .= '<div><img src="'. wp_get_attachment_url( $thumbnail->ID) .'"></div>';
+		}	
+	}
+
+	if (!empty($getGalleryImages)) {
+		foreach ($galleryImages as $gi_value) {
+			$galleryHolder .= '<div><img src="'. $gi_value .'"></div>';
+		}	
+	}
+
+	$vehicle_options_list = cd_get_vehicle_map();
+	$specs = get_post_meta( $post_id );
+
+	/*var_dump($vehicle_options_list);*/
+
+	foreach ($vehicle_options_list['specs'] as $specs_tabs) {
+		foreach (explode(',', $specs_tabs) as $spec_tab) {
+			array_push($specsArrayHolder, $spec_tab);
+		}
+	}
+
+	foreach ($vehicle_options_list['convenience'] as $convenience_tabs) {
+		foreach ( explode(',', $convenience_tabs) as $convenience_tab ) {
+			array_push($convenienceArrayHolder, $convenience_tab);
+		}
+	}
+
+	foreach ($vehicle_options_list['comfort'] as $comfort_tabs) {
+		foreach ( explode(',', $comfort_tabs) as $comfort_tab ) {
+			array_push($comfortArrayholder, $comfort_tab);
+		}
+	}
+
+	foreach ($vehicle_options_list['entertainment'] as $enter_tabs) {
+		foreach ( explode(',', $enter_tabs) as $enter_tab ) {
+			array_push($entertainmentArrayholder, $enter_tab);
+		}
+	}
+
+	foreach ($vehicle_options_list['safety'] as $safety_tabs) {
+		foreach ( explode(',', $safety_tabs) as $safety_tab ) {
+			array_push($safetyArrayholder, $safety_tab);
+		}
+	}
+
+	foreach ($specsArrayHolder as $as_value) {
+
+		if(!empty($as_value)) {
+
+			$slug = trim( $as_value );
+			$slug = strtolower($slug);
+			$slug = str_replace(array(' ', '/'), '_', $slug);
+
+			if (!empty($singleCars[$slug])) {
+
+				$specsHolder .= '<tr>
+					<td>'. ucfirst(trim( $as_value )) .'</td>
+					<td>'. $singleCars[$slug] .'</td>
+				</tr>';
+
+			}
+
+		}
+
+	}
+
+	foreach ($convenienceArrayHolder as $cah_value) {
+
+		if (!empty($cah_value)) {
+
+			$slug = trim( $cah_value );
+			$slug = strtolower($slug);
+			$slug = str_replace(array(' ', '/'), '_', $slug);
+
+			if (!empty($singleCars['decoded_' . $slug]) && $singleCars['decoded_' . $slug] != 'N/A') {
+				$convenienceHolder .= '<li>' . ucfirst(trim( $cah_value )) . '</li>';
+			}
+
+		}
+
+	}
+
+	foreach ($comfortArrayholder as $coah_value) {
+
+		if (!empty($coah_value)) {
+
+			$slug = trim( $coah_value );
+			$slug = strtolower($slug);
+			$slug = str_replace(array(' ', '/'), '_', $slug);
+
+			if (!empty($singleCars['decoded_' . $slug]) && $singleCars['decoded_' . $slug] != 'N/A') {
+				$comfortHolder .= '<li>' . ucfirst(trim( $coah_value )) . '</li>';
+			}
+
+		}
+
+	}
+
+	foreach ($entertainmentArrayholder as $eah_value) {
+
+		if (!empty($eah_value)) {
+
+			$slug = trim( $eah_value );
+			$slug = strtolower($slug);
+			$slug = str_replace(array(' ', '/'), '_', $slug);
+
+			if (!empty($singleCars['decoded_' . $slug]) && $singleCars['decoded_' . $slug] != 'N/A') {
+				$entertainmentHolder .= '<li>' . ucfirst(trim( $eah_value )) . '</li>';
+			}
+
+		}
+
+	}
+
+	foreach ($safetyArrayholder as $sah_value) {
+
+		if (!empty($sah_value)) {
+
+			$slug = trim( $sah_value );
+			$slug = strtolower($slug);
+			$slug = str_replace(array(' ', '/'), '_', $slug);
+
+			if (!empty($singleCars['decoded_' . $slug]) && $singleCars['decoded_' . $slug] != 'N/A') {
+				$safetyHolder .= '<li>' . ucfirst(trim( $sah_value )) . '</li>';
+			}
+
+		}
+
+	}
+
+
+    $content = '<div class="vehicle_display_view">
+    	<div class="vdv_header">
+    		<h1>'. $singleCars['post_title'] .'</h1>
+    		<span>AED '. number_format($singleCars['price']) .'</span>
+    	</div>
+    	<div class="vdv_image_view">
+    		<div class="large">'. $galleryHolder .'</div>
+    		<div class="thumb">'. $galleryHolder .'</div>
+    	</div>
+    	<div class="tabs">
+    		<div class="h_tabs">
+    			<ul>
+    				<li><a href="" data-panel="#p_one" class="active">Specifications</a></li>
+    				<li><a href="" data-panel="#p_two">Features</a></li>
+    				<li><a href="" data-panel="#p_three">Safety</a></li>
+    				<li><a href="" data-panel="#p_four">Contact Us</a></li>
+    			</ul>
+    		</div>
+    		<div class="h_panel">
+    			<div id="p_one" class="active_panel">
+    				<div class="h_panel_head" class="active">Specifications</div>
+    				<div class="inner_panel">
+    					<table>
+    						<tr>
+    							<td colspan="2" class="tab_heading">'. $singleCars['post_title'] .'</td>
+    						</tr>
+    						'. (!empty($singleCars['post_content']) ? '<tr><td colspan="2" class="tab_content"><p>'. $singleCars['post_content'] .'</p></td></tr>' : '' ) .'
+    						<tr>
+    							<td>Stock No.</td>
+    							<td>'. $singleCars['stock_number'] .'</td>
+    						</tr>
+    						<tr>
+    							<td>Body Style</td>
+    							<td>'. $singleCars['decoded_body_style'] .'</td>
+    						</tr>
+    						<tr>
+    							<td>Year</td>
+    							<td>'. $singleCars['decoded_model_year'] .'</td>
+    						</tr>
+    						<tr>
+    							<td>Car Make</td>
+    							<td>'. $singleCars['decoded_make'] .'</td>
+    						</tr>
+    						<tr>
+    							<td>Car Model</td>
+    							<td>'. $singleCars['decoded_model'] .'</td>
+    						</tr>
+    						<tr>
+    							<td>Mileage</td>
+    							<td>'. $singleCars['mileage'] .'</td>
+    						</tr>
+    						'. $specsHolder .'
+    					</table>
+    				</div>
+    			</div>
+    			<div id="p_two">
+    				<div class="h_panel_head">Features</div>
+    				<div class="inner_panel">
+    					<table>
+							<tr>
+								<td colspan="2" class="tab_heading">Convenience</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<ul>'. $convenienceHolder .'</ul>
+								</td>
+							</tr>
+    					</table>
+    					<table>
+							<tr>
+								<td colspan="2" class="tab_heading">Comfort</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<ul>'. $comfortHolder .'</ul>
+								</td>
+							</tr>
+    					</table>
+    					<table>
+							<tr>
+								<td colspan="2" class="tab_heading">Entertainment</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<ul>'. $entertainmentHolder .'</ul>
+								</td>
+							</tr>
+    					</table>
+    				</div>
+    			</div>
+    			<div id="p_three">
+    				<div class="h_panel_head">Safety</div>
+    				<div class="inner_panel">
+    					<table>
+							<tr>
+								<td colspan="2" class="tab_heading">Safety Features</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<ul>'. $safetyHolder .'</ul>
+								</td>
+							</tr>
+    					</table>
+    				</div>
+    			</div>
+    			<div id="p_four">
+    				<div class="h_panel_head">Contact Us</div>
+    				<div class="inner_panel">
+    					<table>
+							<tr>
+								<td colspan="2" class="tab_heading">Inquire Us</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									
+								</td>
+							</tr>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>';
+
+    return $content;
+}
+add_filter( 'cd_vdp_filter', 'lao_vdp', 10, 2 );
 
 /**
  * Implement the Custom Header feature.

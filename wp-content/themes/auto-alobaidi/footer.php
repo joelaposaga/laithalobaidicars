@@ -18,6 +18,7 @@
 				<div class="col-lg-3">
 					<div class="fm_tile latest_autos">
 						<h3><div class="thin-palallelogram"><span>/</span><span>/</span></div>Latest Autos</h3>
+						<?php echo do_shortcode( '[footer_new_cars]' ); ?>
 					</div>
 				</div>
 				<div class="col-lg-3">
@@ -31,16 +32,13 @@
 						<h3><div class="thin-palallelogram"><span>/</span><span>/</span></div>Contact Us</h3>
 						<ul>
 							<li>
-								<h4><i class="fa fa-map-marker" aria-hidden="true"></i> Address</h4>
-								<p><?php echo $get_company_profile['address']['text']; ?></p>
+								<p><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $get_company_profile['address']['text']; ?></p>
 							</li>
 							<li>
-								<h4><i class="fa fa-phone" aria-hidden="true"></i> Phone</h4>
-								<p><?php echo $get_company_profile['phone']; ?></p>
+								<p><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $get_company_profile['phone']; ?></p>
 							</li>
 							<li>
-								<h4><i class="fa fa-envelope" aria-hidden="true"></i> Email</h4>
-								<p><?php echo $get_company_profile['contact-email']; ?></p>
+								<p><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $get_company_profile['contact-email']; ?></p>
 							</li>
 							<li>
 								<a href="https://goo.gl/maps/CY6tBF8ShY82" target="blank">Open Location Map</a>
@@ -48,6 +46,9 @@
 							</li>
 						</ul>
 					</div>
+				</div>
+				<div class="col-lg-3">
+					
 				</div>
 			</div>
 		</div>
