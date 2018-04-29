@@ -733,6 +733,14 @@ function lao_vdp( $content, $post_id ) {
     		<h1>'. $singleCars['post_title'] .'</h1>
     		<span>AED '. number_format($singleCars['price']) .'</span>
     	</div>
+    	<div class="vdv_buttons">
+    		<ul>
+    			<li><a href="" class="single_view_buttons">Inquire Now</a></li>
+    			<li><a href="" class="single_view_buttons">Email to a Friend</a></li>
+    			<li><a href="" class="single_view_buttons">Print</a>
+    			<li><span>Share: '. do_shortcode( '[addtoany buttons="facebook,twitter,google_plus"]' ) .'</span>
+    		</ul>
+    	</div>
     	<div class="vdv_image_view">
     		<div class="large">'. $galleryHolder .'</div>
     		<div class="thumb">'. $galleryHolder .'</div>

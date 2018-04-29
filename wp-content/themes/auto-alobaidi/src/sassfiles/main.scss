@@ -1004,6 +1004,7 @@ footer {
 	max-width: 992px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-bottom: 50px;
 
 	.vdv_header {
 		display: flex;
@@ -1011,7 +1012,7 @@ footer {
 		justify-content: space-between;
 		border-bottom: 1px solid #fff;
 		padding-bottom: 15px;
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 
 		h1 {
 			color: #fff;
@@ -1028,6 +1029,41 @@ footer {
 			font-size: 1.3em;
 			font-weight: 700;
 			line-height: 1;
+		}
+	}
+
+	.vdv_buttons {
+		margin-bottom: 10px;
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+
+			li {
+				margin-right: 10px;
+				color: #fff;
+				font-weight: 700;
+				font-size: 0.8em;
+				text-transform: uppercase;
+
+				a.single_view_buttons {
+					display: block;
+					padding: 10px 15px;
+					background-color: #222;
+					color: #fff;
+					font-weight: 700;
+					text-transform: uppercase;
+					border-radius: 3px;
+
+					&:hover {
+						background-color: #ff0000;
+					}
+				}
+			}
 		}
 	}
 

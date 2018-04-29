@@ -24,6 +24,7 @@
 				<div class="col-lg-3">
 					<div class="fm_tile twitter_feeds">
 						<h3><div class="thin-palallelogram"><span>/</span><span>/</span></div>From Twitter</h3>
+						<div><a class="twitter-timeline" data-height="400" data-theme="dark" data-link-color="#E81C4F" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 					</div>
 				</div>
 				<div class="col-lg-3">
