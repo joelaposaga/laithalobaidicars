@@ -50,3 +50,5 @@
 	</div>
 </div>
 
+<div id="to_top"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+

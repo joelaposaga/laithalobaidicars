@@ -25,12 +25,11 @@ jQuery(function($){
 
 		$('#footer_car_logo').slick({
 			infinite: true,
-			slidesToShow: 1,
+			slidesToShow: 8,
 			slidesToScroll: 5,
 			arrows: false,
 			autoplay: true,
 			autoplaySpeed: 2000,
-			variableWidth: true,
 		});
 
 		$('.vdv_image_view .large').slick({
