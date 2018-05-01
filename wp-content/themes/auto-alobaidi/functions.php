@@ -20,7 +20,8 @@ function twentyseventeen_setup() {
 
 	add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
 	add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
-	add_image_size( 'car_thumb_img', 450, 286, true );
+	add_image_size( 'car_thumb_img', 450, 286, array('center', 'center') );
+	add_image_size( 'car_thumb_img_slider', 992, 533, array('center', 'center') );
 
 	// Set the default content width.
 	$GLOBALS['content_width'] = 525;
@@ -602,7 +603,7 @@ function lao_vdp( $content, $post_id ) {
 
 	if (!empty($thumbnails)) {
 		foreach ($thumbnails as $thumbnail) {
-			$galleryHolder .= '<div><img src="'. wp_get_attachment_url( $thumbnail->ID) .'"></div>';
+			$galleryHolder .= '<div><img src="'. wp_get_attachment_url( $thumbnail->ID ) .'"></div>';
 		}	
 	}
 
@@ -740,10 +741,10 @@ function lao_vdp( $content, $post_id ) {
     	</div>
     	<div class="vdv_buttons">
     		<ul>
-    			<li><a href="" class="single_view_buttons">Inquire Now</a></li>
-    			<li><a href="" class="single_view_buttons">Email to a Friend</a></li>
+    			<li><a href="#inquiry_form" class="open_inquiry_listings single_view_buttons inquire_now" data-car="'. $singleCars['post_title'] .'">Inquire Now</a></li>
+    			<li><a href="#email_to_a_friend_form" class="open_email_to_a_friend_listings single_view_buttons">Email to a Friend</a></li>
     			<li><a href="" class="single_view_buttons">Print</a>
-    			<li><span>Share: '. do_shortcode( '[addtoany buttons="facebook,twitter,google_plus"]' ) .'</span>
+    			<li class="share_buttons_single"><span>Share: </span>'. do_shortcode( '[addtoany buttons="facebook,twitter,google_plus"]' ) .'
     		</ul>
     	</div>
     	<div class="vdv_image_view">
@@ -863,11 +864,28 @@ function lao_vdp( $content, $post_id ) {
     			</div>
     		</div>
     	</div>
-    </div>';
+    </div>
+    <div id="email_to_a_friend_form" class="white-popup mfp-hide" data-form-car="">
+		' . do_shortcode( '[contact-form-7 id="171" title="Email To A Friend" car_id="'. $post_id .'"]' ) . '
+	</div>
+    ';
 
     return $content;
 }
 add_filter( 'cd_vdp_filter', 'lao_vdp', 10, 2 );
+
+/* contactform7 filter */
+
+function lao_email_a_friend_email_hidden( $out, $pairs, $atts ) {
+    $my_attr = 'car_id';
+ 
+    if ( isset( $atts[$my_attr] ) ) {
+        $out[$my_attr] = $atts[$my_attr];
+    }
+ 
+    return $out;
+}
+add_filter( 'shortcode_atts_wpcf7', 'lao_email_a_friend_email_hidden', 10, 3 );
 
 /**
  * Implement the Custom Header feature.

@@ -1146,6 +1146,17 @@ footer {
 						background-color: #ff0000;
 					}
 				}
+
+				&.share_buttons_single {
+					display: flex;
+					align-items: center;
+
+					.addtoany_shortcode {
+						a {
+							line-height: 1;
+						}
+					}
+				}
 			}
 		}
 	}

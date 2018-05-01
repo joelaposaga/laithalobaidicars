@@ -97,6 +97,7 @@
 	<?php echo do_shortcode( '[contact-form-7 id="170" title="Inquiry Form"]' ); ?>
 </div>
 
+
 <?php wp_footer(); ?>
 </body>
 </html>

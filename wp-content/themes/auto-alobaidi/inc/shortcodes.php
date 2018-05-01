@@ -261,3 +261,7 @@ function lao_get_latest_cars_footer() {
 	<?php
 }
 add_shortcode( 'footer_new_cars', 'lao_get_latest_cars_footer' );
+
+function lao_email_to_a_friend() {
+	
+}

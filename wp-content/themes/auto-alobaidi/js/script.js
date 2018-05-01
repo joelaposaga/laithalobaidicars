@@ -102,6 +102,14 @@ jQuery(function($){
 			$('#inquiry_form').find('textarea').val(new_m_default);
 		});
 
+		$('.vehicle_display_view .vdv_buttons .inquire_now').click(function(){
+			var m_default = $('#inquiry_form').find('textarea').val();
+			car = "'" + $(this).data('car') + "'";
+			var new_m_default = m_default.replace('$car', car);
+
+			$('#inquiry_form').find('textarea').val(new_m_default);
+		});
+
 		$('.open_inquiry_listings').magnificPopup({
 			type:'inline',
 			midClick: true,
@@ -113,6 +121,11 @@ jQuery(function($){
 					$('#inquiry_form').find('textarea').val(r_new_m_default);
 				}
 			}
+		});
+
+		$('.open_email_to_a_friend_listings').magnificPopup({
+			type:'inline',
+			midClick: true,
 		});
 
 		$('.sharing_show_button_list').on('mouseover', function(){
