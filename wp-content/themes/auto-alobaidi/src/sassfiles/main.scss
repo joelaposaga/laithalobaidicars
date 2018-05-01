@@ -31,8 +31,7 @@ iframe {
 		> div {
 			&:first-child {
 				text-align:center;
-				margin-top: 20%;
-    			margin-bottom: 20%;
+    			margin-bottom: 15%;
 			}
 
 			&:nth-child(3) {
@@ -402,6 +401,7 @@ iframe {
 								transform: translateY(-50%);
 								color: #666;
 								font-size: 1.2em;
+								z-index: 1;
 							}
 							input[type="text"], input[type="email"] {
 								border-radius: 200px;
@@ -823,7 +823,7 @@ footer {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 30px;
-	background-color: rgba(56,69,72,0.5);
+	background-color: rgba(0,0,0,0.3);
 
 	.image {
 		max-width: 350px;
@@ -903,7 +903,9 @@ footer {
 				justify-content: flex-start;
 
 				li {
-					a {
+					position: relative;
+					a.car_lists_item_buttons {
+						position: relative;
 						display: block;
 						background-color: #6b757d;
 						color: #fff;
@@ -916,6 +918,22 @@ footer {
 
 						&:hover {
 							background-color: #353a3e;
+						}
+					}
+
+					.sharing_buttons {
+						position: absolute;
+						top: 100%;
+						left: 0;
+						right: -10px;
+						background-color: #fff;
+						padding: 5px;
+						overflow: auto;
+
+						display: none;
+
+						a {
+							line-height: 1;
 						}
 					}
 				}
@@ -978,7 +996,6 @@ footer {
 	max-width: 992px;
 	margin-left: auto;
 	margin-right: auto;
-
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #fff;
@@ -988,6 +1005,11 @@ footer {
 		font-size: 0.9em;
 		margin: 0;
 	}
+}
+
+#demon-content.listing {
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .searched_by {
@@ -1173,12 +1195,24 @@ footer {
 
 #to_top {
 	position: fixed;
-	bottom: 50px;
-	right: 50px;
-	width: 50px;
-	height: 50px;
+	bottom: 20px;
+	right: 70px;
+	width: 40px;
+	height: 40px;
 	background-color: #000;
 	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
+	visibility: hidden;
+	opacity: 0;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	&:hover {
+		background-color: #ff0000;
+	}
 }
 
 @import 'media@large.scss';

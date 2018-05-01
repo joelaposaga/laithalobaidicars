@@ -257,3 +257,53 @@ select {
 	}
 	
 }
+.white-popup {
+	position: relative;
+	background: #0e1315;
+	padding: 20px;
+	width: auto;
+	max-width: 350px;
+	margin: 20px auto;
+}
+
+.lao_form {
+	.lf_header {
+		margin-top: 0px;
+		text-align: center;
+		color: #fff;
+		font-weight: 700;
+		text-transform: capitalize;
+		font-size: 1.3em;
+		padding-bottom: 10px;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+		margin-bottom: 10px;
+	}
+
+	> div {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		label {
+			line-height: 1;
+			font-size: 0.8em;
+			color: #999;
+			text-transform: capitalize;
+			font-weight: 400;
+			margin-bottom: 5px;
+		}
+		input[type="text"], input[type="email"], input[type="number"], textarea {
+			padding: 7px 15px;
+			font-size: 1em;
+			border-radius: 3px;
+		}
+		input[type="submit"] {
+			background-color: #ff0000;
+		}
+		textarea {
+			resize: none;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -337,10 +337,12 @@ function twentyseventeen_scripts() {
 	wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'font-awesome', get_theme_file_uri('/libs/font-awesome/css/font-awesome.min.css'), array(), '4.7.0');
 	wp_enqueue_style( 'slick-css', get_theme_file_uri('/libs/slick/slick.css'), array(), '1.8.0');
+	wp_enqueue_style( 'magnific-popup-css', get_theme_file_uri('/libs/magnific-popup/magnific-popup.css'), array(), '1.1.0');
 	wp_enqueue_style( 'bootstrap-grid', get_theme_file_uri('/libs/bootstrap-grid/bootstrap-grid.min.css'), array(), '4.1.0');
 	wp_enqueue_style( 'lao_custom_styles', get_theme_file_uri('/css/style.css'), array(), '1.0.0');
 
 	// Theme js scripts succinct
+	wp_enqueue_script( 'magnific-popup-js', get_theme_file_uri( '/libs/magnific-popup/jquery.magnific-popup.min.js' ), array(), '1.1.0', true );
 	wp_enqueue_script( 'slick-js', get_theme_file_uri( '/libs/slick/slick.min.js' ), array(), '1.8.0', true );
 	wp_enqueue_script( 'trunk8', get_theme_file_uri( '/libs/trunk8/trunk8.js' ), array(), '1.0.0', true );
 	wp_enqueue_script( 'lao_custom_scripts', get_theme_file_uri( '/js/script.js' ), array(), '1.0.0', true );
@@ -534,9 +536,12 @@ function lao_car_list_car_demon($content,$post_id) {
 				</div>
 				<div class="bottom">
 					<ul>
-						<li><a href="'. $cars['link'] .'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> View Details</a></li>
-						<li><a href=""><i class="fa fa-question-circle" aria-hidden="true"></i> Inquire Now</a></li>
-						<li><a href=""><i class="fa fa-share-alt" aria-hidden="true"></i> Share Vehicle</a></li>
+						<li><a href="'. $cars['link'] .'" class="car_lists_item_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> View Details</a></li>
+						<li><a href="#inquiry_form" class="car_lists_item_buttons open_inquiry_listings inquire_now" data-car="'.$cars['post_title'].'"><i class="fa fa-question-circle" aria-hidden="true"></i> Inquire Now</a></li>
+						<li class="sharing_show_button_list">
+							<a href="" class="car_lists_item_buttons"><i class="fa fa-share-alt" aria-hidden="true"></i> Share Vehicle</a>
+							<div class="sharing_buttons">'. do_shortcode( '[addtoany url="'. $cars['link'] .'" title="'. $cars['post_title'] .'"]' ) .'</div>
+						</li>
 					</ul>
 				</div>
 			</div>

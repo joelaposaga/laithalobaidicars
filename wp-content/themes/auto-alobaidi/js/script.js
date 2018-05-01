@@ -68,7 +68,65 @@ jQuery(function($){
 				$(data_content).addClass('active_panel');
 			}
 
-		})
+		});
+
+		var winHeight = $(window).height();
+
+		$(window).scroll(function () {
+			if ($(window).scrollTop() > 1000 ) {
+				$("#to_top").css({
+					'visibility': 'visible',
+					'opacity'	: 1,
+					'overflow'	: 'visible'
+				});
+			} else {
+				$("#to_top").css({
+					'visibility': 'hidden',
+					'opacity'	: 0,
+					'overflow'	: 'hidden'
+				});
+			}
+		});
+
+		$("#to_top").click(function(){
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+		});
+
+		var car = '';
+
+		$('.car_lists_item .content .bottom .inquire_now').click(function(){
+			var m_default = $('#inquiry_form').find('textarea').val();
+			car = "'" + $(this).data('car') + "'";
+			var new_m_default = m_default.replace('$car', car);
+
+			$('#inquiry_form').find('textarea').val(new_m_default);
+		});
+
+		$('.open_inquiry_listings').magnificPopup({
+			type:'inline',
+			midClick: true,
+			callbacks: {
+				beforeClose: function(){
+					var r_m_default = $('#inquiry_form').find('textarea').val();
+					var r_new_m_default = r_m_default.replace(car, "$car");
+
+					$('#inquiry_form').find('textarea').val(r_new_m_default);
+				}
+			}
+		});
+
+		$('.sharing_show_button_list').on('mouseover', function(){
+			$(this).find('.sharing_buttons').css({'display':'block'});
+		});
+
+		$('.sharing_show_button_list > a').on('click', function(e){
+			e.preventDefault();
+			$(this).next('.sharing_buttons').css({'display':'block'});
+		});
+
+		$('.sharing_show_button_list').on('mouseout', function(){
+			$(this).find('.sharing_buttons').css({'display':'none'});
+		});
 
 	});
 
