@@ -129,13 +129,20 @@ function lao_footer_car_company_logo () {
 add_shortcode( 'footer_car_logo', 'lao_footer_car_company_logo' );
 
 
-/* Get the latest cara */
+/* Get the monthly deals */
 
 function lao_get_latest_cars() {
 
 	$args = array(
 		'post_type' => 'cars_for_sale',
 		'post_status' => 'publish',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'vehicle_tag',
+				'field' => 'slug',
+				'terms' => 'monthly-deal'
+			),
+		),
 		'order' => 'DESC',
 		'orderby' => 'date',
 		'post_per_page' => '6',

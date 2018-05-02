@@ -1,0 +1,19 @@
+@keyframes heartbeat {
+	0% {
+		transform: scale(1);
+	}
+	70% {
+		transform: scale(1.2);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes slideleft {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: -50%;
+	}
+}

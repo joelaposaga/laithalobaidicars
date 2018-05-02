@@ -1,4 +1,5 @@
 @import '_variables.scss';
+@import 'animation.scss';
 
 * {
 	box-sizing: border-box;
@@ -264,9 +265,9 @@ iframe {
 				li {
 					a {
 						display: block;
-						text-transform: uppercase;
+						text-transform: capitalize;
 						color: #fff;
-						font-size: 0.95em;
+						font-size: 1em;
 						padding: 7px 0;
 						line-height: 1;
 					}
@@ -1223,6 +1224,39 @@ footer {
 	transition: all 0.3s ease;
 	&:hover {
 		background-color: #ff0000;
+	}
+}
+
+.blinder {
+	position: fixed;
+
+	&.b_left {
+		top: 0;
+		right: 50%;
+		bottom: 0;
+		width: 50%;
+		background-color: #000;
+		z-index: 9998;
+		transition: all 0.5s linear;
+	}
+	&.b_right {
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		width: 50%;
+		background-color: #000;
+		z-index: 9998;
+		transition: all 0.5s linear;
+	}
+	&.logo {
+		top: 50%;
+		left: 50%;
+		z-index: 9999;
+		transform: translate(-50%, -50%);
+
+		img {
+			animation: heartbeat 1.5s ease-in-out infinite forwards running;
+		}
 	}
 }
 

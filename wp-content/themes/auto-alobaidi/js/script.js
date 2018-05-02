@@ -1,5 +1,20 @@
 jQuery(function($){
 
+	$(window).load(function(){
+		$('.blinder.logo img').animate({
+			opacity: '0',
+			visibility: 'hidden',
+		}, 200, function(){
+			$('.blinder.logo').css({display: 'none'});
+			$('.blinder.b_left').css({
+				right: '100%',
+			});
+			$('.blinder.b_right').css({
+				left: '100%',
+			})
+		})
+	})
+
 	$(document).ready(function() {
 		
 		/* car demon form */
@@ -108,6 +123,11 @@ jQuery(function($){
 			var new_m_default = m_default.replace('$car', car);
 
 			$('#inquiry_form').find('textarea').val(new_m_default);
+		});
+
+		$('.open_popup_general').magnificPopup({
+			type: 'inline',
+			midClick: true,
 		});
 
 		$('.open_inquiry_listings').magnificPopup({

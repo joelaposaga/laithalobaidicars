@@ -346,6 +346,8 @@ function twentyseventeen_scripts() {
 	wp_enqueue_script( 'magnific-popup-js', get_theme_file_uri( '/libs/magnific-popup/jquery.magnific-popup.min.js' ), array(), '1.1.0', true );
 	wp_enqueue_script( 'slick-js', get_theme_file_uri( '/libs/slick/slick.min.js' ), array(), '1.8.0', true );
 	wp_enqueue_script( 'trunk8', get_theme_file_uri( '/libs/trunk8/trunk8.js' ), array(), '1.0.0', true );
+	wp_enqueue_script( 'gsap-tweenlite', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenLite.min.js', array(), '1.20.4', true );
+	wp_enqueue_script( 'gsap-CSSPlugin', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/plugins/CSSPlugin.min.js', array(), '1.20.4', true );
 	wp_enqueue_script( 'lao_custom_scripts', get_theme_file_uri( '/js/script.js' ), array(), '1.0.0', true );
 
 

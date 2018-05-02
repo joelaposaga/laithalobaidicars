@@ -46,7 +46,7 @@
 		</ul>
 	</div>
 	<div class="join_us">
-		<a href="">Join Us <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+		<a href="#join_us_form" class="open_popup_general">Join Us <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
 	</div>
 </div>
 

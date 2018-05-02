@@ -92,9 +92,17 @@
 	</div>
 </footer>
 
+<!-- blinder -->
+<div class="blinder b_left"></div>
+<div class="blinder logo"><img src="<?php echo site_url( '/' ); ?>wp-content/uploads/2018/04/laith-al-obaidi-logo.png"></div>
+<div class="blinder b_right"></div>
+
 <!-- Universal Modals -->
 <div id="inquiry_form" class="white-popup mfp-hide" data-form-car="">
 	<?php echo do_shortcode( '[contact-form-7 id="170" title="Inquiry Form"]' ); ?>
+</div>
+<div id="join_us_form" class="white-popup mfp-hide" data-form-car="">
+	<?php echo do_shortcode( '[contact-form-7 id="175" title="Join Us Form"]' ); ?>
 </div>
 
 
