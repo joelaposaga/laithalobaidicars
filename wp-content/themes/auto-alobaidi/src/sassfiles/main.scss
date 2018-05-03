@@ -271,6 +271,13 @@ iframe {
 						padding: 7px 0;
 						line-height: 1;
 					}
+
+					/* &.menu-item-has-children {
+						a {
+							position: relative;
+							
+						}
+					} */
 				}
 			}
 		}
@@ -1089,6 +1096,8 @@ footer {
 	margin-left: auto;
 	margin-right: auto;
 	padding-bottom: 50px;
+	padding-left: 15px;
+	padding-right: 15px;
 
 	.vdv_header {
 		display: flex;
@@ -1259,6 +1268,6 @@ footer {
 		}
 	}
 }
-
+@import 'about-us.scss';
 @import 'media@large.scss';
 @import '_common.scss';

@@ -745,7 +745,7 @@ function lao_vdp( $content, $post_id ) {
     		<ul>
     			<li><a href="#inquiry_form" class="open_inquiry_listings single_view_buttons inquire_now" data-car="'. $singleCars['post_title'] .'">Inquire Now</a></li>
     			<li><a href="#email_to_a_friend_form" class="open_email_to_a_friend_listings single_view_buttons">Email to a Friend</a></li>
-    			<li><a href="" class="single_view_buttons">Print</a>
+    			<li><a href="" class="single_view_buttons">Brochure</a>
     			<li class="share_buttons_single"><span>Share: </span>'. do_shortcode( '[addtoany buttons="facebook,twitter,google_plus"]' ) .'
     		</ul>
     	</div>
