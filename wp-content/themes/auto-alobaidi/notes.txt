@@ -1,0 +1,13 @@
+needed
+
+1. services
+2. contact us
+all branches
+	phone numbers
+	complete address
+	images
+	descriptions of branch (for content)
+
+
+-make contact us dynamic
+-make our team dynamic

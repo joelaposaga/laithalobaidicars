@@ -1,0 +1,54 @@
+.blogs {
+	.blog_container {
+		.blog_tile {
+			background-color: rgba(0,0,0,0.3);
+			max-height: 270px;
+			h3 {
+				color: #fff;
+				font-size: 1.2em;
+				text-align: left;
+				font-weight: 700;
+				line-height: 1.5;
+				margin: 0;
+				margin-bottom: 20px;
+			}
+			.b_image {
+				float: left;
+				width: 300px;
+				height: 270px;
+				background-image: url('../images/no_image.jpg');
+				background-size: cover;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			.b_excerpt {
+				float: left;
+				width: calc(100% - 320px);
+				padding: 20px;
+			}
+			.b_read_more {
+				display: block;
+				padding: 7px 15px;
+				background-color: #333;
+				color: #fff;
+				text-align: center;
+				max-width: 200px;
+				border-radius: 3px;
+
+				&:hover {
+					background-color: #ff0000;
+					color: #fff;
+				}
+			}
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+				height: 0;
+				overflow: hidden;
+				opacity: 0;
+				visibility: hidden;
+			}
+		}	
+	}
+}

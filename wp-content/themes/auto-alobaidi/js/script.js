@@ -38,6 +38,13 @@ jQuery(function($){
 			lines: 3,
 		});
 
+		$('.blogs .blog_container .blog_tile h3').trunk8({
+			lines: 2,
+		});
+		$('.blogs .blog_container .blog_tile .b_excerpt p').trunk8({
+			lines: 3,
+		});
+
 		$('#footer_car_logo').slick({
 			infinite: true,
 			slidesToShow: 8,

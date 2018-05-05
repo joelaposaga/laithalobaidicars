@@ -70,3 +70,41 @@
 		}
 	}
 }
+.board_members {
+	> .row {
+		margin-left: -15px;
+		margin-right: -15px;
+		margin-bottom: -30px;
+		[class^="col-"] {
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-bottom: 30px;
+		}
+	}
+	h3 {
+		color: #fff;
+		font-size: 1.5em;
+		text-align: left;
+		font-weight: 700;
+		line-height: 1;
+		margin: 0;
+	}
+	.bm_tile {
+		text-align: center;
+		padding: 25px;
+		background-color: rgba(0,0,0,0.3);
+		margin: 0 auto;
+		img {
+			max-width: 200px;
+			border: 5px solid #fff;
+		}
+		h4 {
+			color: #fff;
+			font-size: 1em;
+		}	
+		p {
+			color: #fff;
+			font-size: 0.9em;
+		}
+	}
+}

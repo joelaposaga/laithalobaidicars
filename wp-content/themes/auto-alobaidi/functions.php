@@ -282,29 +282,6 @@ function twentyseventeen_widgets_init() {
 }
 add_action( 'widgets_init', 'twentyseventeen_widgets_init' );
 
-/**
- * Replaces "[...]" (appended to automatically generated excerpts) with ... and
- * a 'Continue reading' link.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param string $link Link to single post/page.
- * @return string 'Continue reading' link prepended with an ellipsis.
- */
-function twentyseventeen_excerpt_more( $link ) {
-	if ( is_admin() ) {
-		return $link;
-	}
-
-	$link = sprintf(
-		'<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
-		esc_url( get_permalink( get_the_ID() ) ),
-		/* translators: %s: Name of current post */
-		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ), get_the_title( get_the_ID() ) )
-	);
-	return ' &hellip; ' . $link;
-}
-add_filter( 'excerpt_more', 'twentyseventeen_excerpt_more' );
 
 /**
  * Handles JavaScript detection.
@@ -499,6 +476,7 @@ add_filter( 'widget_tag_cloud_args', 'twentyseventeen_widget_tag_cloud_args' );
 
 /* remove filter */
 remove_filter('the_content', 'wpautop');
+remove_filter( 'the_excerpt', 'wpautop' );
 
 /* car demon filters */
 
@@ -888,6 +866,15 @@ function lao_email_a_friend_email_hidden( $out, $pairs, $atts ) {
     return $out;
 }
 add_filter( 'shortcode_atts_wpcf7', 'lao_email_a_friend_email_hidden', 10, 3 );
+
+
+/* ACF Plugin */
+/* google map keys */
+function my_acf_google_map_api( $api ){
+	$api['key'] = 'AIzaSyAhk41zcRIpT1WoX18_YI8O2dc6CQSIAq0';
+	return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 /**
  * Implement the Custom Header feature.
