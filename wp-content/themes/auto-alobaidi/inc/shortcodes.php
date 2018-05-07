@@ -1,17 +1,5 @@
 <?php
 
-/* background-container */
-function lao_background_container ($attr, $content = null) {
-	$s_attr = shortcode_atts(array(
-		'background_image' => ''
-	), $attr);
-
-	$display = '<div style="background-image:url('. esc_attr($s_attr['background_image']) .');background-size:cover;background-repeat:no-repeat;background-position:center top;background-attachment:fixed;padding-left:200px;padding-right:200px;">'. do_shortcode($content) .'</div>';
-
-	return $display;
-}
-add_shortcode( 'background_container', 'lao_background_container' );
-
 /* testimonials */
 function lao_testimonials () {
 
@@ -130,7 +118,6 @@ add_shortcode( 'footer_car_logo', 'lao_footer_car_company_logo' );
 
 
 /* Get the monthly deals */
-
 function lao_get_latest_cars() {
 
 	$args = array(
@@ -220,6 +207,7 @@ function lao_get_latest_cars() {
 }
 add_shortcode( 'home_new_cars', 'lao_get_latest_cars' );
 
+/* Get latest Cars display in footer */
 function lao_get_latest_cars_footer() {
 	$args = array(
 		'post_type' => 'cars_for_sale',
@@ -268,10 +256,6 @@ function lao_get_latest_cars_footer() {
 	<?php
 }
 add_shortcode( 'footer_new_cars', 'lao_get_latest_cars_footer' );
-
-function lao_email_to_a_friend() {
-	
-}
 
 /* Get Blogs */
 function lao_get_blogs() {
@@ -322,3 +306,274 @@ function lao_get_blogs() {
 	return ob_get_clean();
 }
 add_shortcode( 'get_blogs', 'lao_get_blogs' );
+
+/* Get Board Members */
+function lao_get_our_team_board_member() {
+
+	ob_start();
+
+	$args = array(
+		'post_type' => 'our_team',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'designation',
+				'field' => 'slug',
+				'terms' => 'board-member',
+			),
+		),
+	);
+
+	$getBoardMember = new WP_Query( $args );
+
+
+	if ( $getBoardMember->have_posts() ) {
+		while ( $getBoardMember->have_posts() ) {
+			$getBoardMember->the_post();
+
+			$getMetaFacebook = get_post_meta( get_the_ID(), 'facebook', true );
+			$getMetaTwitter = get_post_meta( get_the_ID(), 'twitter', true );
+			$getMetaInstagram = get_post_meta( get_the_ID(), 'instagram', true );
+			$getMetaLinkedin = get_post_meta( get_the_ID(), 'linkedin', true );
+			$getMetaEmail = get_post_meta( get_the_ID(), 'email', true );
+			
+			?>
+
+				<div class="col-lg-6">
+					<div class="bm_tile">
+						<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>">
+						<h4><?php the_title(); ?></h4>
+						<p><?php the_content(); ?></p>
+
+						<div class="links">
+							<ul>
+								<li><a href="<?php echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			<?php
+
+		}
+		wp_reset_postdata();
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'board_members', 'lao_get_our_team_board_member' );
+
+/* Get Sales */
+function lao_get_our_team_sales() {
+
+	ob_start();
+
+	$args = array(
+		'post_type' => 'our_team',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'designation',
+				'field' => 'slug',
+				'terms' => 'sales',
+			),
+		),
+	);
+
+	$getSales = new WP_Query( $args );
+
+	if ($getSales->have_posts()) {
+		while ($getSales->have_posts()) {
+			$getSales->the_post();
+
+			$getSalesNumbers = get_post_meta( get_the_ID(), 'contact_numbers', true );
+
+			?>
+
+				<div class="col-lg-4">
+					<div class="bm_tile">
+						<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>">
+						<h4><?php the_title(); ?></h4>
+						<div class="contact_number" style="margin-bottom: 15px;">
+							<ul>
+								<?php  
+
+									foreach (explode( "\r\n", $getSalesNumbers) as $gsn_value) {
+										?>
+											<li><a href="tel:<?php str_replace(' ', '', $gsn_value) ?>"><i class="fa fa-phone" aria-hidden="true"></i><?php echo $gsn_value; ?></a></li>
+										<?php
+									}
+
+								?>	
+							</ul>
+							
+						</div>
+						<div class="links">
+							<ul>
+								<li><a href="<?php echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+			<?php
+
+		}
+		wp_reset_postdata();
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'sales_team', 'lao_get_our_team_sales' );
+
+/* contact us branches */
+function lao_get_contact_us_branches() {
+
+	ob_start();
+
+	$args = array(
+		'post_type' => 'branches',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'tax_query' => array(
+			'relation' => 'OR',
+			array(
+				'taxonomy' => 'branch_categories',
+				'field' => 'slug',
+				'terms' => 'iraq',
+			),
+			array(
+				'taxonomy' => 'branch_categories',
+				'field' => 'slug',
+				'terms' => 'jordan',
+			),
+			array(
+				'taxonomy' => 'branch_categories',
+				'field' => 'slug',
+				'terms' => 'kuwait',
+			),
+			array(
+				'taxonomy' => 'branch_categories',
+				'field' => 'slug',
+				'terms' => 'uae',
+			),
+		),
+	);
+
+	$getContactUsBranches = new WP_Query( $args );
+
+	$argsTerm = array(
+		'taxonomy' => 'branch_categories',
+		'hide_empty' => false,
+		'order' => 'DESC',
+		'orderby' => 'name'
+	);
+
+	$getBranchCategory = get_terms( $argsTerm );
+
+	foreach ($getBranchCategory as $gbc_value) {
+
+		if ($gbc_value->parent === 0) {
+
+			?>
+
+				<div class="col-12 branches" style="padding-bottom: 30px;">
+					<h3><?php echo $gbc_value->name; ?></h3>
+
+					<?php  
+
+						$getBranchCategoryChildren = get_term_children( $gbc_value->term_id, $gbc_value->taxonomy );
+
+						if (count($getBranchCategoryChildren) !== 0) {
+
+							?>
+
+								<div class="tabs">
+									<div class="h_tabs">
+										<ul>
+
+											<?php  
+												$gbcc_count = 0;
+												foreach ($getBranchCategoryChildren as $gbcc_value) {
+													$gbcc_count++;
+
+													$gbcc_term = get_term( $gbcc_value, $gbc_value->taxonomy );
+
+														?>
+
+															<li><a href="" data-panel="#p_<?php echo $gbcc_count; ?>" class="<?php echo ($gbcc_count === 1 ? 'active' : ''); ?>"><?php echo $gbcc_term->name; ?></a></li>
+
+														<?php
+												}
+											?>
+											
+										</ul>
+									</div>
+									<div class="h_panel">
+
+										<?php  
+											$gbcc_count = 0;
+											foreach ($getBranchCategoryChildren as $gbcc_value) {
+												$gbcc_count++;
+												$gbcc_term = get_term( $gbcc_value, $gbc_value->taxonomy );
+
+													?>
+
+														<div id="p_<?php echo $gbcc_count; ?>" class="<?php echo ($gbcc_count === 1 ? 'active_panel' : ''); ?>">
+										    				<div class="h_panel_head" class="<?php echo ($gbcc_count === 1 ? 'active' : ''); ?>"><?php echo $gbcc_term->name; ?></div>
+										    				<div class="inner_panel">
+										    					<div class="row">
+										    						<div class="col-lg-4">
+										    							<div class="branch_info">
+										    								
+										    							</div>
+										    						</div>
+										    						<div class="col-lg-8">
+										    							
+										    						</div>
+										    					</div>
+										    				</div>
+										    			</div>
+
+													<?php
+											}
+										?>
+									</div>
+								</div>
+
+							<?php
+						}
+
+					?>
+										
+				</div>
+
+			<?php
+
+		}
+
+	}
+
+	/*if ($getContactUsBranches->have_posts()) {
+		while ($getContactUsBranches->have_posts()) {
+			$getContactUsBranches->the_post();
+
+
+
+		}
+	}*/
+
+	return ob_get_clean();
+}
+add_shortcode( 'contact_us_branches', 'lao_get_contact_us_branches' );

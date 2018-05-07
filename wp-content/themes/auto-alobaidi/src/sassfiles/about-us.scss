@@ -106,5 +106,53 @@
 			color: #fff;
 			font-size: 0.9em;
 		}
+		.contact_number {
+			ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+				li {
+					margin-bottom: 5px;
+					a {
+						display: block;
+						color: #fff;
+						.fa {
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+		.links {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-top: 1px solid #fff;
+			padding: 5px;
+
+			ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+
+				li {
+					float: left;
+					margin-right: 5px;
+
+					a {
+						padding: 5px;
+						display: block;
+						.fa {
+							color: #fff;
+							font-size: 1.2em;
+						}
+					}
+
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
 	}
 }
