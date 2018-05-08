@@ -442,37 +442,6 @@ function lao_get_contact_us_branches() {
 
 	ob_start();
 
-	$args = array(
-		'post_type' => 'branches',
-		'post_status' => 'publish',
-		'posts_per_page' => -1,
-		'tax_query' => array(
-			'relation' => 'OR',
-			array(
-				'taxonomy' => 'branch_categories',
-				'field' => 'slug',
-				'terms' => 'iraq',
-			),
-			array(
-				'taxonomy' => 'branch_categories',
-				'field' => 'slug',
-				'terms' => 'jordan',
-			),
-			array(
-				'taxonomy' => 'branch_categories',
-				'field' => 'slug',
-				'terms' => 'kuwait',
-			),
-			array(
-				'taxonomy' => 'branch_categories',
-				'field' => 'slug',
-				'terms' => 'uae',
-			),
-		),
-	);
-
-	$getContactUsBranches = new WP_Query( $args );
-
 	$argsTerm = array(
 		'taxonomy' => 'branch_categories',
 		'hide_empty' => false,
@@ -528,31 +497,152 @@ function lao_get_contact_us_branches() {
 												$gbcc_count++;
 												$gbcc_term = get_term( $gbcc_value, $gbc_value->taxonomy );
 
-													?>
 
-														<div id="p_<?php echo $gbcc_count; ?>" class="<?php echo ($gbcc_count === 1 ? 'active_panel' : ''); ?>">
-										    				<div class="h_panel_head" class="<?php echo ($gbcc_count === 1 ? 'active' : ''); ?>"><?php echo $gbcc_term->name; ?></div>
-										    				<div class="inner_panel">
-										    					<div class="row">
-										    						<div class="col-lg-4">
-										    							<div class="branch_info">
-										    								
-										    							</div>
-										    						</div>
-										    						<div class="col-lg-8">
-										    							
-										    						</div>
-										    					</div>
-										    				</div>
-										    			</div>
 
-													<?php
+												$gbcc_posts_args = array(
+													'post_type' => 'branches',
+													'post_status' => 'publish',
+													'posts_per_page' => 1,
+													'order' => 'ASC',
+													'orderby' => 'date',
+													'tax_query' => array(
+														array(
+															'taxonomy' => 'branch_categories',
+															'field' => 'term_id',
+															'terms' => $gbcc_term->term_id,
+														),
+													),
+												);
+
+												$gbcc_posts = new WP_Query( $gbcc_posts_args );
+
+												if ($gbcc_posts->have_posts()) {
+													while ($gbcc_posts->have_posts()) {
+														$gbcc_posts->the_post();
+
+														$gbcc_posts_meta_map = get_post_meta( get_the_ID(), 'location', true );
+														$gbcc_posts_meta_address = get_post_meta( get_the_ID(), 'address', true );
+														$gbcc_posts_meta_email_address = get_post_meta( get_the_ID(), 'email_address', true );
+														$gbcc_posts_meta_phone_number = get_post_meta( get_the_ID(), 'phone_number', true );
+														?>
+
+															<div id="p_<?php echo $gbcc_count; ?>" class="<?php echo ($gbcc_count === 1 ? 'active_panel' : ''); ?>">
+											    				<div class="h_panel_head" class="<?php echo ($gbcc_count === 1 ? 'active' : ''); ?>"><?php echo $gbcc_term->name; ?></div>
+											    				<div class="inner_panel">
+											    					<div class="row">
+											    						<div class="col-lg-4">
+											    							<div class="branch_info">
+											    								
+											    								<ul>
+											    									<li><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $gbcc_posts_meta_address; ?></li>
+											    									<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $gbcc_posts_meta_email_address; ?></li>
+											    									<?php  
+											    										foreach (explode("\r\n", $gbcc_posts_meta_phone_number) as $gpmpn_value) {
+
+										    												if (!empty($gpmpn_value)) {
+
+												    											?>
+
+												    												<li><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $gpmpn_value; ?></li>
+
+												    											<?php		
+
+										    												}
+											    										}
+											    									?>
+											    								</ul>
+
+											    							</div>
+											    						</div>
+											    						<div class="col-lg-8">
+											    							<div>
+											    								<?php echo $gbcc_posts_meta_map; ?>
+											    							</div>
+											    						</div>
+											    					</div>
+											    				</div>
+											    			</div>
+
+														<?php
+
+													}
+												}
+
 											}
 										?>
 									</div>
 								</div>
 
 							<?php
+						} else {
+
+							$gbc_posts_args = array (
+								'post_type' => 'branches',
+								'post_status' => 'publish',
+								'posts_per_page' => 1,
+								'order' => 'ASC',
+								'orderby' => 'date',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'branch_categories',
+										'field' => 'term_id',
+										'terms' => $gbc_value->term_id,
+									),
+								),
+							);
+
+							$gbc_posts = new WP_Query( $gbc_posts_args );
+
+							if ($gbc_posts->have_posts()) {
+								while ($gbc_posts->have_posts()) {
+									$gbc_posts->the_post();
+
+									$gbc_posts_meta_map = get_post_meta( get_the_ID(), 'location', true );
+									$gbc_posts_meta_address = get_post_meta( get_the_ID(), 'address', true );
+									$gbc_posts_meta_email_address = get_post_meta( get_the_ID(), 'email_address', true );
+									$gbc_posts_meta_phone_number = get_post_meta( get_the_ID(), 'phone_number', true );
+
+									?>
+										<div style="background-color: rgba(0,0,0,0.3);">
+											<div class="row">
+					    						<div class="col-lg-4">
+					    							<div class="branch_info">
+					    								
+					    								<ul>
+					    									<li><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $gbc_posts_meta_address; ?></li>
+					    									<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $gbc_posts_meta_email_address; ?></li>
+					    									<?php  
+					    										foreach (explode("\r\n", $gbc_posts_meta_phone_number) as $gpmpn_value) {
+
+				    												if (!empty($gpmpn_value)) {
+
+						    											?>
+
+						    												<li><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $gpmpn_value; ?></li>
+
+						    											<?php		
+
+				    												}
+					    										}
+					    									?>
+					    								</ul>
+
+					    							</div>
+					    						</div>
+					    						<div class="col-lg-8">
+					    							<div>
+					    								<?php echo $gbc_posts_meta_map; ?>
+					    							</div>
+					    						</div>
+					    					</div>
+	
+										</div>
+				    					
+									<?php
+
+								}
+							}
+
 						}
 
 					?>
@@ -564,15 +654,6 @@ function lao_get_contact_us_branches() {
 		}
 
 	}
-
-	/*if ($getContactUsBranches->have_posts()) {
-		while ($getContactUsBranches->have_posts()) {
-			$getContactUsBranches->the_post();
-
-
-
-		}
-	}*/
 
 	return ob_get_clean();
 }
