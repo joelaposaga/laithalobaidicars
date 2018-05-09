@@ -262,12 +262,15 @@ function lao_get_blogs() {
 
 	ob_start();
 
+	$paged = ( get_query_var('paged') ? get_query_var('paged') : 1 );
+
 	$args = array(
 		'post_type' => array('post'),
 		'post_status' => array('publish'),
-		'posts_per_page' => 9,
+		'posts_per_page' => 1,
 		'order' => 'DESC',
 		'orderby' => 'date',
+		'paged' => $paged,
 	);
 
 	$getBlogPosts = new WP_Query( $args );
@@ -293,9 +296,21 @@ function lao_get_blogs() {
 
 				<?php
 			}
-			wp_reset_postdata();
 		?>
 			</div>
+			<div class="page_navigation">
+				<?php 
+					echo paginate_links(
+						array( 
+							'total' => $getBlogPosts->max_num_pages , 
+							'type' => 'list',
+							'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i> prev',
+							'next_text' => 'next <i class="fa fa-chevron-right" aria-hidden="true"></i>'
+						)
+					); 
+				?>
+			</div>
+			<?php wp_reset_postdata(); ?>
 		<?php
 	} else {
 		?>

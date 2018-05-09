@@ -42,7 +42,7 @@ jQuery(function($){
 			lines: 2,
 		});
 		$('.blogs .blog_container .blog_tile .b_excerpt p').trunk8({
-			lines: 3,
+			lines: 2,
 		});
 
 		$('#footer_car_logo').slick({

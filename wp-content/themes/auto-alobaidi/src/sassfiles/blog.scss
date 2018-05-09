@@ -2,7 +2,13 @@
 	.blog_container {
 		.blog_tile {
 			background-color: rgba(0,0,0,0.3);
-			max-height: 270px;
+			max-height: 230px;
+			margin-bottom: 20px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
 			h3 {
 				color: #fff;
 				font-size: 1.2em;
@@ -14,8 +20,8 @@
 			}
 			.b_image {
 				float: left;
-				width: 300px;
-				height: 270px;
+				width: 270px;
+				height: 230px;
 				background-image: url('../images/no_image.jpg');
 				background-size: cover;
 				background-position: center center;
@@ -23,8 +29,13 @@
 			}
 			.b_excerpt {
 				float: left;
-				width: calc(100% - 320px);
+				width: calc(100% - 270px);
 				padding: 20px;
+
+				> p {
+					max-height: 63px;
+					overflow: hidden;
+				}
 			}
 			.b_read_more {
 				display: block;
@@ -32,7 +43,7 @@
 				background-color: #333;
 				color: #fff;
 				text-align: center;
-				max-width: 200px;
+				max-width: 140px;
 				border-radius: 3px;
 
 				&:hover {

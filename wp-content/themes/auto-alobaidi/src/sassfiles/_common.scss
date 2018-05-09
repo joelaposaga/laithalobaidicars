@@ -371,3 +371,36 @@ div.wpcf7-mail-sent-ng:before, div.wpcf7-spam-blocked:before {
 	content: "\f00d";
 	font-family: 'FontAwesome'
 }
+
+.page_navigation {
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			float: left;
+
+			a {
+				display: inline-block;
+				margin: 0;
+				background-color: #353a3e;
+				color: #fff;
+				font-size: 0.9em;
+				border: none;
+				padding: 7px 15px;
+				border-radius: 3px;
+				margin-right: 5px;
+			}
+		}
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+			height: 0;
+			overflow: hidden;
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}

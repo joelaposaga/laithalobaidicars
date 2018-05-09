@@ -8,6 +8,10 @@ all branches
 	images
 	descriptions of branch (for content)
 
+careers
+job positions 
+job description
+
 
 -make contact us dynamic
 -make our team dynamic
