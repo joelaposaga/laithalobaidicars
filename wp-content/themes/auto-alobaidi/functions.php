@@ -876,6 +876,17 @@ function my_acf_google_map_api( $api ){
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+
+/* Custom Functions */
+function get_the_content_with_formatting ($more_link_text = null, $stripteaser = false) {
+	
+	$content = get_the_content( $more_link_text, $stripteaser );
+	$content = apply_filters('the_content', $content);
+	$content = str_replace(']]>', ']]&gt;', $content);
+
+	return $content;
+}
+
 /**
  * Implement the Custom Header feature.
  */

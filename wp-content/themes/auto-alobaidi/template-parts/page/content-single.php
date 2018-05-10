@@ -1,21 +1,26 @@
-<?php
-
-get_header(); ?>
 <div class="lao_page">
 	<div style="background-image:url('<?php echo site_url(); ?>/wp-content/uploads/2018/04/background.jpg');background-size:cover;background-repeat:no-repeat;background-position:center top;background-attachment:fixed;padding-left:200px;padding-right:200px;">
+
+		<div class="page_header">
+			<h2>
+				<?php  
+
+					/*if (is_singular( 'post' )) {
+						echo "Blogs";
+					} else {
+						the_title();
+					}*/
+
+				?>
+			</h2>
+		</div>
 		<?php
 			while ( have_posts() ) :
 				the_post();
 
-				if (is_singular('cars_for_sale')) {
-					get_template_part( 'template-parts/page/content', 'car-single-view' );
-				} else {
-					get_template_part( 'template-parts/post/content' );
-				}
+				the_content();
 
-			endwhile;			
+			endwhile;
 		?>
 	</div>
 </div>
-<?php
-get_footer();

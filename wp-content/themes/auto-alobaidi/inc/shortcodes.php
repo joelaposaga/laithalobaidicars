@@ -267,7 +267,7 @@ function lao_get_blogs() {
 	$args = array(
 		'post_type' => array('post'),
 		'post_status' => array('publish'),
-		'posts_per_page' => 1,
+		'posts_per_page' => 9,
 		'order' => 'DESC',
 		'orderby' => 'date',
 		'paged' => $paged,
@@ -290,7 +290,7 @@ function lao_get_blogs() {
 						<div class="b_excerpt">
 							<a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
 							<p><?php the_excerpt(); ?></p>
-							<a href="" class="b_read_more">Read More</a>
+							<a href="<?php the_permalink(); ?>" class="b_read_more">Read More</a>
 						</div>
 					</div>
 
@@ -304,8 +304,8 @@ function lao_get_blogs() {
 						array( 
 							'total' => $getBlogPosts->max_num_pages , 
 							'type' => 'list',
-							'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i> prev',
-							'next_text' => 'next <i class="fa fa-chevron-right" aria-hidden="true"></i>'
+							'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+							'next_text' => '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
 						)
 					); 
 				?>
@@ -321,6 +321,71 @@ function lao_get_blogs() {
 	return ob_get_clean();
 }
 add_shortcode( 'get_blogs', 'lao_get_blogs' );
+
+/* Get Events */
+function lao_get_events() {
+
+	ob_start();
+
+	$paged = ( get_query_var('paged') ? get_query_var('paged') : 1 );
+
+	$args = array(
+		'post_type' => array('events'),
+		'post_status' => array('publish'),
+		'posts_per_page' => 9,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		'paged' => $paged,
+	);
+
+	$getBlogPosts = new WP_Query( $args );
+
+	if ( $getBlogPosts->have_posts() ) {
+		?>
+			<div class="blog_container">
+		<?php
+			while ( $getBlogPosts->have_posts() ) {
+				$getBlogPosts->the_post();
+
+				$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+				?>
+
+					<div class="blog_tile">
+						<a href="<?php the_permalink(); ?>"><div class="b_image" style="background-image: url('<?php echo $featured_img_url; ?>')"></div></a>
+						<div class="b_excerpt">
+							<a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
+							<p><?php the_excerpt(); ?></p>
+							<a href="<?php the_permalink(); ?>" class="b_read_more">Read More</a>
+						</div>
+					</div>
+
+				<?php
+			}
+		?>
+			</div>
+			<div class="page_navigation">
+				<?php 
+					echo paginate_links(
+						array( 
+							'total' => $getBlogPosts->max_num_pages , 
+							'type' => 'list',
+							'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+							'next_text' => '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+						)
+					); 
+				?>
+			</div>
+			<?php wp_reset_postdata(); ?>
+		<?php
+	} else {
+		?>
+			<div class="no_result">No Events Added.</div>
+		<?php
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'get_events', 'lao_get_events' );
 
 /* Get Board Members */
 function lao_get_our_team_board_member() {

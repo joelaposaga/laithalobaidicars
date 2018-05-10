@@ -1,0 +1,22 @@
+.single_blog_content {
+	padding-left: 15px;
+	padding-right: 15px;
+	> .row {
+
+		margin-left: -15px;
+		margin-right: -15px;
+		margin-bottom: -30px;
+
+		[class^="col-"] {
+			padding-bottom: 30px;
+			h3 {
+				color: #fff;
+				font-size: 1.5em;
+				text-align: left;
+				font-weight: 700;
+				line-height: 1.5;
+				margin: 0;
+			}
+		}
+	}
+}
