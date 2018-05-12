@@ -482,7 +482,6 @@ remove_filter( 'the_excerpt', 'wpautop' );
 
 function lao_car_list_car_demon($content,$post_id) {
 	$cars = cd_get_car( $post_id );
-
 	$content = '
 		<div class="car_lists_item">
 			<div class="image">
@@ -562,6 +561,7 @@ add_filter( 'cd_nav_filter', 'lao_bottom_navigation', 10, 3 );
 
 function lao_vdp( $content, $post_id ) {
 	$galleryHolder = '';
+	$galleryThumbHolder = '';
 	$specsHolder = '';
 	$convenienceHolder = '';
 	$comfortHolder = '';
@@ -583,15 +583,25 @@ function lao_vdp( $content, $post_id ) {
 
 	if (!empty($thumbnails)) {
 		foreach ($thumbnails as $thumbnail) {
-			$galleryHolder .= '<div><img src="'. wp_get_attachment_url( $thumbnail->ID ) .'"></div>';
+
+			$large_image = wp_get_attachment_image_src( $thumbnail->ID, 'car_thumb_img_slider', false );
+			$thumb_image = wp_get_attachment_image_src( $thumbnail->ID, 'car_thumb_img', false );
+
+			$galleryHolder .= '<div><img src="'. $large_image[0] .'" width="'. $large_image[1] .'" height="'. $large_image[2] .'"></div>';
+			$galleryThumbHolder .= '<div><img src="'. $thumb_image[0] .'" width="'. $thumb_image[1] .'" height="'. $thumb_image[2] .'"></div>';
 		}	
 	}
 
 	if (!empty($getGalleryImages)) {
 		foreach ($galleryImages as $gi_value) {
 			$galleryHolder .= '<div><img src="'. $gi_value .'"></div>';
+			$galleryThumbHolder .= '<div><img src="'. $gi_value .'"></div>';
 		}	
 	}
+
+/*	var_dump($getGalleryImages);
+	var_dump('__________________________');*/
+	/*var_dump($thumbnails);*/
 
 	$vehicle_options_list = cd_get_vehicle_map();
 	$specs = get_post_meta( $post_id );
@@ -729,7 +739,7 @@ function lao_vdp( $content, $post_id ) {
     	</div>
     	<div class="vdv_image_view">
     		<div class="large">'. $galleryHolder .'</div>
-    		<div class="thumb">'. $galleryHolder .'</div>
+    		<div class="thumb">'. $galleryThumbHolder .'</div>
     	</div>
     	<div class="tabs">
     		<div class="h_tabs">

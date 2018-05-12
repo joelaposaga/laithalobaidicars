@@ -1,0 +1,28 @@
+.accessories {
+
+	h3 {
+		color: #fff;
+		font-size: 1.5em;
+		text-align: left;
+		font-weight: 700;
+		line-height: 1;
+		margin: 0;
+		margin-bottom: 20px;
+	}
+
+	> .row {
+		margin-left: -15px;
+		margin-right: -15px;
+		margin-bottom: -30px;
+		> [class^="col-"] {
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-bottom: 30px;
+		}
+	}
+
+	.a_accessories {
+		background-color: rgba(0,0,0,0.3);
+		padding: 20px;
+	}
+}

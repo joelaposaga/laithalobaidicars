@@ -168,6 +168,15 @@ jQuery(function($){
 			$(this).find('.sharing_buttons').css({'display':'none'});
 		});
 
+		$('.testimonials .testimonial .says p').trunk8({
+			fill: '&hellip; <a id="read-more" href="#">read more</a>',
+			lines: 3,
+		});
+
+		$('.career_tile p').trunk8({
+			lines: 3,
+		});
+
 	});
 
 	$(document).mouseup(function (e){
@@ -176,6 +185,16 @@ jQuery(function($){
 		if (!container.is(e.target) && container.has(e.target).length === 0){
 			container.css({'display':'none'});
 		}
+	});
+
+	$(document).on('click', '#read-more', function (event) {
+		$(this).parent().trunk8('revert').append(' <a id="read-less" href="#">read less</a>');
+		return false;
+	});
+
+	$(document).on('click', '#read-less', function (event) {
+		$(this).parent().trunk8();
+		return false;
 	});
 
 });

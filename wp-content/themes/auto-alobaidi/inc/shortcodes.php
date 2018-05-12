@@ -267,7 +267,7 @@ function lao_get_blogs() {
 	$args = array(
 		'post_type' => array('post'),
 		'post_status' => array('publish'),
-		'posts_per_page' => 9,
+		'posts_per_page' => 1,
 		'order' => 'DESC',
 		'orderby' => 'date',
 		'paged' => $paged,
@@ -738,3 +738,186 @@ function lao_get_contact_us_branches() {
 	return ob_get_clean();
 }
 add_shortcode( 'contact_us_branches', 'lao_get_contact_us_branches' );
+
+/* Get Testimonials */
+function lao_get_testimonials() {
+	ob_start();
+
+	$paged = ( get_query_var('paged') ? get_query_var('paged') : 1 );
+
+	$args = array(
+		'post_type' => array('testimonials'),
+		'post_status' => array('publish'),
+		'posts_per_page' => 12,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		'paged' => $paged,
+	);
+
+	$getTestimonials = new WP_Query( $args );
+
+		?> 
+			<div class="row">
+		<?php
+
+			if ($getTestimonials->have_posts()) {
+				while ($getTestimonials->have_posts()) {
+					$getTestimonials->the_post();
+
+					$testimonialAvatar = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+					$avatar = (empty($testimonialAvatar) ? content_url() . '/uploads/2018/05/avatar.jpg' : $testimonialAvatar );
+
+					?>
+						<div class="col-lg-6">
+							<div class="testimonial">
+								<div class="says">
+									<p><?php the_content(); ?></p>
+								</div>
+								<div class="customer">
+									<div class="avatar" style="background-image: url('<?php echo $avatar; ?>');background-size: cover;background-position: center center;background-repeat: no-repeat;"></div>
+									<span><?php the_title() ?></span>
+								</div>
+							</div>	
+						</div>
+					<?php
+				}
+				?>
+					<div class="col-12">
+						<div class="page_navigation">
+							<?php 
+								echo paginate_links(
+									array( 
+										'total' => $getTestimonials->max_num_pages , 
+										'type' => 'list',
+										'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+										'next_text' => '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+									)
+								); 
+							?>
+						</div>
+					</div>
+				<?php
+				wp_reset_postdata();
+			} else {
+				?>
+					<div class="no_result">No Events Added.</div>
+				<?php
+			}
+
+		?> 
+			</div>
+		<?php
+
+	return ob_get_clean();
+}
+add_shortcode( 'testimonials', 'lao_get_testimonials' );
+
+/* Get Careers */
+function lao_get_career() {
+	ob_start();
+
+	$paged = ( get_query_var('paged') ? get_query_var('paged') : 1 );
+
+	$args = array(
+		'post_type' => array('career'),
+		'post_status' => array('publish'),
+		'posts_per_page' => 9,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		'paged' => $paged,
+	);
+
+	$getCareers = new WP_Query( $args );
+
+	if ( $getCareers->have_posts() ) {
+			$counter = 0;
+			while ( $getCareers->have_posts() ) {
+				$getCareers->the_post();
+
+				?>
+					<div class="col-12">
+						<div class="career_tile">
+							<a href="#career_<?php echo $counter; ?>" class="open_popup_general"><h3><?php the_title(); ?></h3></a>
+							<p><?php the_content(); ?></p>
+							<a href="#career_<?php echo $counter; ?>" class="b_read_more open_popup_general">View More</a>
+						</div>
+						<div id="career_<?php echo $counter; ?>" class="white-popup career_popup mfp-hide">
+							<h3><?php the_title(); ?></h3>
+							<p><?php the_content(); ?></p>
+						</div>
+					</div>
+				<?php
+
+				$counter++;
+			}
+		?>
+			<div class="col-12">
+				<div class="page_navigation">
+					<?php 
+						echo paginate_links(
+							array( 
+								'total' => $getCareers->max_num_pages , 
+								'type' => 'list',
+								'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+								'next_text' => '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+							)
+						); 
+					?>
+				</div>
+			</div>
+			<?php wp_reset_postdata(); ?>
+		<?php
+	} else {
+		?>
+			<div class="no_result">No Blogs Added.</div>
+		<?php
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'careers', 'lao_get_career' );
+
+/* Get Accessories */
+function lao_get_accessories() {
+	ob_start();
+
+	$paged = ( get_query_var('paged') ? get_query_var('paged') : 1 );
+
+	$args = array(
+		'post_type' => array('accessories'),
+		'post_status' => array('publish'),
+		'posts_per_page' => 1,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		'paged' => $paged,
+	);
+
+	$getAccessories = new WP_Query( $args );
+
+	if ($getAccessories->have_posts()) {
+		?>
+			<div class="row">
+		<?php
+		while ($getAccessories->have_posts()) {
+			$getAccessories->the_post();
+			?>
+
+				<div class="col-lg-4">
+					<div class="m_accessories">
+						<div class="ma_image"></div>
+						<h4></h4>
+						<div class="ma_price"></div>
+						<div class="ma_button"></div>
+					</div>
+				</div>
+
+			<?php
+		}
+		?>
+			</div>
+		<?php
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'accessories', 'lao_get_accessories' );

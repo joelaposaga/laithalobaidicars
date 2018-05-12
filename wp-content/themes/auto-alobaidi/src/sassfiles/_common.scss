@@ -304,6 +304,40 @@ select {
 	width: auto;
 	max-width: 350px;
 	margin: 20px auto;
+
+	&.career_popup {
+		max-width: 992px;
+
+		h3 {
+			color: #fff;
+			font-size: 1.5em;
+			text-align: left;
+			font-weight: 700;
+			line-height: 1;
+			margin: 0;
+			margin-bottom: 20px;
+		}
+
+		p {
+			color: #fff;
+			font-size: 0.9em;
+			text-align: justify;
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+
+		ul {
+			color: #fff;
+	    	font-size: 0.9em;
+	    	margin-top: 15px;
+	   		margin-bottom: 15px;
+	   		padding-left: 30px;
+		}
+
+		a {
+			color: #ff0000;
+		}
+	}
 }
 
 .lao_form {
@@ -455,4 +489,8 @@ div.wpcf7-mail-sent-ng:before, div.wpcf7-spam-blocked:before {
 }
 .no_result {
 	color: #fff;
+}
+.single_car_slider_image {
+	max-width: 992px;
+	max-height: 533px;
 }

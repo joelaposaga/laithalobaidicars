@@ -19,6 +19,27 @@ iframe {
 	z-index: 99;
 	height: 100%;
 	background-color: rgba(56, 69, 72, 0.5);
+	overflow-y: auto;
+
+	/* width */
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: #f1f1f1; 
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: #888; 
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: #555; 
+	}
 }
 
 .lao_left_sidebar {
@@ -1273,5 +1294,9 @@ footer {
 @import 'blog.scss';
 @import 'careers.scss';
 @import 'single_page_content.scss';
+@import 'testimonials.scss';
+@import 'accessories.scss';
+@import 'shipping.scss';
+@import 'trade-in.scss';
 @import 'media@large.scss';
 @import '_common.scss';
