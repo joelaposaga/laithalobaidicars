@@ -77,8 +77,7 @@ function Calculate() {
 			document.Finance.finalpay3.value = Math.round((BalloonValue) * 100) / 100;
 			document.Finance.total3.value = AmtFinanced;
 			document.Finance.credit3.value = 0;
-		}
-		else {
+		} else {
 			SubTotal2 = (1 / (MonthlyRate * (Math.pow(1 + MonthlyRate, Periods))));
 			MonthlyFinanceCost1 = (AmtFinanced / (SubTotal1 - SubTotal2));
 			MonthlyFinanceCost2 = (BalloonValue * MonthlyRate);
@@ -100,8 +99,7 @@ function Calculate() {
 			document.Finance.finalpay4.value = Math.round((BalloonValue) * 100) / 100;
 			document.Finance.total4.value = AmtFinanced;
 			document.Finance.credit4.value = 0;
-		}
-		else {
+		} else {
 			SubTotal2 = (1 / (MonthlyRate * (Math.pow(1 + MonthlyRate, Periods))));
 			MonthlyFinanceCost1 = (AmtFinanced / (SubTotal1 - SubTotal2));
 			MonthlyFinanceCost2 = (BalloonValue * MonthlyRate);
@@ -115,7 +113,7 @@ function Calculate() {
 		}
 
 		Periods = 60;
-		if(document.Finance.Rate.value == 0) {
+		if (document.Finance.Rate.value == 0) {
 			if(document.Finance.PPP.checked == true)
 				document.Finance.monthpay5.value = Math.round(((AmtFinanced/Periods) * 100) / 100) * PPPRate;
 			else
@@ -123,8 +121,7 @@ function Calculate() {
 			document.Finance.finalpay5.value = Math.round((BalloonValue) * 100) / 100;
 			document.Finance.total5.value = AmtFinanced;
 			document.Finance.credit5.value = 0;
-		}
-		else {
+		} else {
 			SubTotal2 = (1 / (MonthlyRate * (Math.pow(1 + MonthlyRate, Periods))));
 			MonthlyFinanceCost1 = (AmtFinanced / (SubTotal1 - SubTotal2));
 			MonthlyFinanceCost2 = (BalloonValue * MonthlyRate);
@@ -168,27 +165,27 @@ function calcAmt(frm) {
 	var paymts_fn = frm.txtYrs.value * 26;
 	var paymts_wk = frm.txtYrs.value * 52;
 
-	if(i_mn > 1.0) {
+	if (i_mn > 1.0) {
 		i_mn = i_mn / 100.0;
 	}
 	i_mn /= 12; // /= | x/=y | x=x/y
 
 	var pow_mn = 1;
-	for(x = 0; x < paymts_mn; x++) {
+	for (x = 0; x < paymts_mn; x++) {
 		pow_mn = pow_mn * (1 + i_mn);
 	}
 
-	if(i_fn > 1.0) {
+	if (i_fn > 1.0) {
 		i_fn = i_fn / 100.0;
 	}
 	i_fn /= 26;
 
 	var pow_fn = 1;
-	for(y = 0; y < paymts_fn; y++) {
+	for (y = 0; y < paymts_fn; y++) {
 		pow_fn = pow_fn * (1 + i_fn);
 	}
 
-	if(i_wk > 1.0) {
+	if (i_wk > 1.0) {
 		i_wk = i_wk / 100.0;
 	}
 	i_wk /= 52;

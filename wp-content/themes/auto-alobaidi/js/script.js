@@ -20,10 +20,10 @@ jQuery(function($){
 		/* car demon form */
 
 		/* remove the word all in car demon search form */
-		$('.cdsf_item .selectBox .selected').each(function(){
+		/*$('.cdsf_item .selectBox .selected').each(function(){
 			var selfText = $(this).html();
 			$(this).html(selfText.replace('ALL', ''));
-		});
+		});*/
 
 		$('#price_range').attr('readonly');
 
@@ -175,6 +175,15 @@ jQuery(function($){
 
 		$('.career_tile p').trunk8({
 			lines: 3,
+		});
+
+		$('.main_menu .menu-item-has-children > a').click(function(e){
+			e.preventDefault();
+			$(this).next().slideToggle();
+		});
+
+		$(".selectBox .selectOptions").click(function(){
+			$(this).css({'display':'none'});
 		});
 
 	});

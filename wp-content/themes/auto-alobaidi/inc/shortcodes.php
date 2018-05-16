@@ -427,13 +427,13 @@ function lao_get_our_team_board_member() {
 						<p><?php the_content(); ?></p>
 
 						<div class="links">
-							<ul>
-								<li><a href="<?php echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-							</ul>
+							<!-- <ul>
+								<li><a href="<?php //echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -473,12 +473,14 @@ function lao_get_our_team_sales() {
 			$getSales->the_post();
 
 			$getSalesNumbers = get_post_meta( get_the_ID(), 'contact_numbers', true );
+			$getMetaEmail = get_post_meta( get_the_ID(), 'email', true );
+			$getSalesImage = (!empty(get_the_post_thumbnail_url( get_the_ID(), 'full' )) ? get_the_post_thumbnail_url( get_the_ID(), 'full' ) : content_url() . '/uploads/2018/05/sales_avatar.png');
 
 			?>
 
 				<div class="col-lg-4">
 					<div class="bm_tile">
-						<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>">
+						<img src="<?php echo $getSalesImage; ?>">
 						<h4><?php the_title(); ?></h4>
 						<div class="contact_number" style="margin-bottom: 15px;">
 							<ul>
@@ -490,19 +492,20 @@ function lao_get_our_team_sales() {
 										<?php
 									}
 
-								?>	
+								?>
+								<li><a href="<?php echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i><?php echo $getMetaEmail; ?></a></li>	
 							</ul>
 							
 						</div>
-						<div class="links">
+						<!-- <div class="links">
 							<ul>
-								<li><a href="<?php echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-								<li><a href="<?php echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								<li><a href="<?php //echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 				</div>
 
@@ -830,27 +833,35 @@ function lao_get_career() {
 	$getCareers = new WP_Query( $args );
 
 	if ( $getCareers->have_posts() ) {
-			$counter = 0;
+			$counter = 1;
+			?>
+				<div class="col-12">
+					<div class="career_tile">
+						<p>We are seeking to hire the following vacancies for new cars agency "USA brand" in Iraq. Baghdad, Basra, Erbil, Dohuk and Sulaymaniyah. All candidates MUST from Automotive industry with Experience of 5 -7 Years at less, English & Arabic is A must.</p>
+			<?php
 			while ( $getCareers->have_posts() ) {
 				$getCareers->the_post();
-
 				?>
-					<div class="col-12">
+					<h3><span><?php echo $counter; ?>.</span><?php the_title(); ?></h3>
+					<!-- <div class="col-12">
 						<div class="career_tile">
-							<a href="#career_<?php echo $counter; ?>" class="open_popup_general"><h3><?php the_title(); ?></h3></a>
-							<p><?php the_content(); ?></p>
-							<a href="#career_<?php echo $counter; ?>" class="b_read_more open_popup_general">View More</a>
+							<a href="#career_<?php //echo $counter; ?>" class="open_popup_general"><h3><?php //the_title(); ?></h3></a>
+							<p><?php //the_content(); ?></p>
+							<a href="#career_<?php //echo $counter; ?>" class="b_read_more open_popup_general">View More</a>
 						</div>
-						<div id="career_<?php echo $counter; ?>" class="white-popup career_popup mfp-hide">
-							<h3><?php the_title(); ?></h3>
-							<p><?php the_content(); ?></p>
+						<div id="career_<?php //echo $counter; ?>" class="white-popup career_popup mfp-hide">
+							<h3><?php //the_title(); ?></h3>
+							<p><?php //the_content(); ?></p>
 						</div>
-					</div>
+					</div> -->
+
 				<?php
 
 				$counter++;
 			}
 		?>
+					</div>
+				</div>
 			<div class="col-12">
 				<div class="page_navigation">
 					<?php 

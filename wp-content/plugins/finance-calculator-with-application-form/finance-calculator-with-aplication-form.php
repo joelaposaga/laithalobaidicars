@@ -5,7 +5,7 @@ Plugin URI: https://getbutterfly.com/wordpress-plugins/
 Description: Finance Calculator is a drop in form for users to calculate indicative repayments. It can be implemented on a page or a post.
 Author: Ciprian Popescu
 Author URI: https://getbutterfly.com/
-Version: 2.1.1
+Version: 2.1.2
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,7 +36,6 @@ add_option('wpfc_currency', 'EUR');
 add_option('wpfc_currency_symbol', '&euro;');
 add_option('wpfcs_loan_options', 'Motor Loan|7.9,Standard Loan|9,College Loan|7,Green Loan|7.9,Secured Loan|5.5,Savers Loan|5.5');
 add_option('wpfc_show_application', 1);
-add_option('wpfc_apply_styles', 1);
 
 function wpfcs_admin_assets($hook) {
     if ((string) $hook !== 'options-general.php?page=wpfcs') {
@@ -48,12 +47,6 @@ function wpfcs_admin_assets($hook) {
 add_action('admin_enqueue_scripts', 'wpfcs_admin_assets');
 
 function wpfcs_assets() {
-    $wpfc_apply_styles = get_option('wpfc_apply_styles');
-
-    if ((int) $wpfc_apply_styles === 1) {
-        wp_enqueue_style('wpfcs', plugins_url('css/style.css', __FILE__ ));
-    }
-
     wp_enqueue_script('wpfcs', plugins_url('includes/js.finance.js', __FILE__ ), array(), '', true);
 }
 add_action('wp_enqueue_scripts', 'wpfcs_assets');
@@ -71,7 +64,6 @@ function wpfc_plugin_options() {
 		update_option('wpfc_currency_symbol', sanitize_text_field($_POST['wpfc_currency_symbol']));
 		update_option('wpfcs_loan_options', sanitize_text_field($_POST['wpfcs_loan_options']));
 		update_option('wpfc_show_application', sanitize_text_field($_POST['wpfc_show_application']));
-		update_option('wpfc_apply_styles', sanitize_text_field($_POST['wpfc_apply_styles']));
 
 		echo '<div id="message" class="updated notice is-dismissible"><p>' . __('Settings saved.', 'finance-calculator-with-aplication-form') . '</p></div>';
 	}
@@ -83,7 +75,6 @@ function wpfc_plugin_options() {
     $wpfc_currency_symbol = get_option('wpfc_currency_symbol');
     $wpfc_show_application = get_option('wpfc_show_application');
 	$wpfcs_loan_options = get_option('wpfcs_loan_options');
-	$wpfc_apply_styles = get_option('wpfc_apply_styles');
 	?>
 	<div class="wrap">
 		<h2>Finance Calculator Settings</h2>
@@ -91,7 +82,6 @@ function wpfc_plugin_options() {
         <div id="gb-ad">
             <h3 class="gb-handle">Thank you for using this plugin!</h3>
             <div class="inside">
-                <img src="<?php echo plugins_url('img/gb-logo-white-512.png', __FILE__); ?>" alt="getButterfly">
                 <h4>This plugin is brought to you by <a href="https://getbutterfly.com/" target="_blank">getButterfly</a>.</h4>
                 <hr>
                 <p>If you enjoy this plugin, why not try our other plugins, <a href="https://getbutterfly.com/wordpress-plugins/imagepress/" target="_blank">ImagePress Image Gallery</a> for a full-featured photo/video gallery or <a href="https://getbutterfly.com/wordpress-plugins/lighthouse/" target="_blank">Lighthouse</a> for better performance and security.</p>
@@ -117,12 +107,6 @@ function wpfc_plugin_options() {
 			    <select name="wpfc_show_application">
 			        <option value="1" <?php if ((int) $wpfc_show_application === 1) { echo 'selected'; } ?>>Show finance application button</option>
 			        <option value="0" <?php if ((int) $wpfc_show_application === 0) { echo 'selected'; } ?>>Hide finance application button</option>
-			    </select>
-			</p>
-			<p>
-			    <select name="wpfc_apply_styles">
-			        <option value="1" <?php if ((int) $wpfc_apply_styles === 1) { echo 'selected'; } ?>>Apply basic field formatting</option>
-			        <option value="0" <?php if ((int) $wpfc_apply_styles === 0) { echo 'selected'; } ?>>Do not apply basic field formatting (use theme)</option>
 			    </select>
 			</p>
 
@@ -432,7 +416,6 @@ function display_finance_calculator($atts) {
 		}
 		add_filter('wp_mail_content_type', 'set_contenttype');
 
-		// send email using WordPress function
 		$headers = '';
 		$headers[] = "From: " . get_option('blogname') . "<" . $_POST['EMAIL_2'] . ">\r\n";
 		$headers[] = "Content-Type: text/html;\r\n";
@@ -546,11 +529,10 @@ function display_finance_calculator($atts) {
 add_shortcode('finance_calculator', 'display_finance_calculator');
 add_shortcode('loan_calculator', 'display_loan_calculator');
 
-// Check for uninstall hook
-if(function_exists('register_uninstall_hook'))
+if (function_exists('register_uninstall_hook')) {
 	register_uninstall_hook(__FILE__, 'wpfc_uninstall');
+}
 
-// Uninstall function
 function wpfc_uninstall() {
 	delete_option('wpfc_finance_rate');
 	delete_option('wpfc_application_email');

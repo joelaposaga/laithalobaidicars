@@ -3,7 +3,7 @@ Contributors: butterflymedia
 Tags: finance, calculator, loans, ppp, payment protection, repayments, mortgage
 Requires at least: 4.6
 Tested up to: 4.9.5
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 Requires PHP: 5.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -43,6 +43,11 @@ You need to add the `[finance_calculator]` or the `[loan_calculator]` shortcode 
 3. Plugin settings
 
 == Changelog ==
+
+= 2.1.2 =
+* UPDATE: Removed hardcoded styling (allow theme to style form fields)
+* UPDATE: Removed getButterfly logo
+* UPDATE: Removed empty folder
 
 = 2.1.1 =
 * UPDATE: Updated WordPress compatibility
