@@ -25,4 +25,25 @@
 		background-color: rgba(0,0,0,0.3);
 		padding: 20px;
 	}
+
+	.m_accessories {
+		h4 {
+			color: #fff;
+			text-align: center;
+			padding-top: 0;
+			font-weight: 400;
+			font-size: 0.9em;
+		}
+		.ma_button {
+			text-align: center;
+			border-bottom: 1px solid #fff;
+			padding-bottom: 10px;
+			margin-bottom: 0;
+			button {
+				padding: 7px 15px;
+				font-weight: 400;
+				font-size: 1em;
+			}
+		}
+	}
 }

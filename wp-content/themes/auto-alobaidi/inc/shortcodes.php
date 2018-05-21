@@ -18,7 +18,7 @@ function lao_testimonials () {
 		while ($testimonial->have_posts()) {
 			$testimonial->the_post();
 			$featured_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-			$get_the_avatar = (!empty($featured_image) ? $featured_image : get_theme_file_uri('/images/avatar.png'));
+			$get_the_avatar = (!empty($featured_image) ? $featured_image : content_url() . '/uploads/2018/05/avatar.jpg');
 
 			?>
 
@@ -54,49 +54,99 @@ function lao_footer_car_company_logo () {
 
 	$company_logo = array(
 		array(
+			'name' 	=> 	'Audi',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/audi.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Audi',
+		),
+		array(
 			'name' 	=> 	'BMW',
 			'logo' 	=> 	get_theme_file_uri('/images/car-logos/bmw.png'),
-			'url' 	=> 	home_url(),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=BMW',
 		),
 		array(
-			'name' 	=> 	'Hyundai',
-			'logo' 	=> 	get_theme_file_uri('/images/car-logos/hyundai.png'),
-			'url' 	=> 	home_url(),
+			'name' 	=> 	'Chevrolet',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/chevrolet.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Chevrolet',
 		),
 		array(
-			'name' 	=> 	'Jaguar',
-			'logo' 	=> 	get_theme_file_uri('/images/car-logos/jaguar.png'),
-			'url' 	=> 	home_url(),
+			'name' 	=> 	'Chrysler',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/chrysler.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Chrysler',
 		),
 		array(
-			'name' 	=> 	'Kia',
-			'logo' 	=> 	get_theme_file_uri('/images/car-logos/kia.png'),
-			'url' 	=> 	home_url(),
+			'name' 	=> 	'Dodge',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/dodge.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Dodge',
+		),
+		array(
+			'name' 	=> 	'Fiat',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/fiat.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Fiat',
+		),
+		array(
+			'name' 	=> 	'Ford',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/ford.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Ford',
+		),
+		array(
+			'name' 	=> 	'Honda',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/honda.png'),
+			'url' 	=> 	home_url()  . '/car-stocks/?search_make=Honda',
+		),
+		array(
+			'name' 	=> 	'Infiniti',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/infiniti.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Infiniti',
+		),
+		array(
+			'name' 	=> 	'Jeep',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/jeep.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Jeep',
 		),
 		array(
 			'name' 	=> 	'Land Rover',
 			'logo' 	=> 	get_theme_file_uri('/images/car-logos/landrover.png'),
-			'url' 	=> 	home_url(),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Land+Rover',
+		),
+		array(
+			'name' 	=> 	'Lexus',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/lexus.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Lexus',
+		),
+		array(
+			'name' 	=> 	'Maserati',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/maserati.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Maserati',
+		),
+		array(
+			'name' 	=> 	'Mazda',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/mazda.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Mazda',
+		),
+		array(
+			'name' 	=> 	'Mercedes',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/mercedes.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Mercedes',
 		),
 		array(
 			'name' 	=> 	'Mitsubishi',
 			'logo' 	=> 	get_theme_file_uri('/images/car-logos/mitsubishi.png'),
-			'url' 	=> 	home_url(),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Mitsubishi',
 		),
 		array(
-			'name' 	=> 	'Nissan',
-			'logo' 	=> 	get_theme_file_uri('/images/car-logos/nissan.png'),
-			'url' 	=> 	home_url(),
+			'name' 	=> 	'Renault',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/renault.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Renault',
 		),
 		array(
-			'name' 	=> 	'Toyota',
-			'logo' 	=> 	get_theme_file_uri('/images/car-logos/toyota.png'),
-			'url' 	=> 	home_url(),
+			'name' 	=> 	'Trolly',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/trolly.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Trolly',
 		),
 		array(
-			'name' 	=> 	'Volkswagen',
-			'logo' 	=> 	get_theme_file_uri('/images/car-logos/volkswagen.png'),
-			'url' 	=> 	home_url(),
+			'name' 	=> 	'Volvo',
+			'logo' 	=> 	get_theme_file_uri('/images/car-logos/volvo.png'),
+			'url' 	=> 	home_url() . '/car-stocks/?search_make=Volvo',
 		),
 	);
 
@@ -118,7 +168,7 @@ add_shortcode( 'footer_car_logo', 'lao_footer_car_company_logo' );
 
 
 /* Get the monthly deals */
-function lao_get_latest_cars() {
+function lao_get_monthly_deals_car() {
 
 	$args = array(
 		'post_type' => 'cars_for_sale',
@@ -137,7 +187,7 @@ function lao_get_latest_cars() {
 
 	$post_number = 0;
 
-	$getLatestCars = new WP_Query($args);
+	$getMonthlyDealCars = new WP_Query($args);
 
 	ob_start();
 
@@ -145,8 +195,8 @@ function lao_get_latest_cars() {
 		<div class="row">
 			<?php
 
-			if ( $getLatestCars->have_posts() ) :
-				while( $getLatestCars->have_posts() ) : $getLatestCars->the_post();
+			if ( $getMonthlyDealCars->have_posts() ) :
+				while( $getMonthlyDealCars->have_posts() ) : $getMonthlyDealCars->the_post();
 
 					if ($post_number === 6) {
 						break;
@@ -185,6 +235,7 @@ function lao_get_latest_cars() {
 										<?php } ?>
 									</ul>
 								</div>
+								<div><button>View Details <i class="fa fa-arrow-right" aria-hidden="true"></i></button></div>
 							</div>
 						</a>
 					</div>
@@ -205,30 +256,37 @@ function lao_get_latest_cars() {
 	return ob_get_clean();
 
 }
-add_shortcode( 'home_new_cars', 'lao_get_latest_cars' );
+add_shortcode( 'home_monthly_deal_cars', 'lao_get_monthly_deals_car' );
 
-/* Get latest Cars display in footer */
-function lao_get_latest_cars_footer() {
+/* Get latest Cars*/
+function lao_get_latest_cars() {
 	$args = array(
 		'post_type' => 'cars_for_sale',
 		'post_status' => 'publish',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'vehicle_condition',
+				'field' => 'slug',
+				'terms' => 'new'
+			),
+		),
 		'order' => 'DESC',
 		'orderby' => 'date',
-		'post_per_page' => '6',
+		'post_per_page' => 12,
 	);
 
 	$post_number = 0;
 
-	$getLatestCarsFooter = new WP_Query($args);
+	$getLatestCars = new WP_Query($args);
 
 	ob_start();
 
 	?>
 
-		<div class="latest_car_footer">
+		<div class="latest_cars">
 			<?php 
-				if ($getLatestCarsFooter->have_posts()) :
-					while ($getLatestCarsFooter->have_posts()) : $getLatestCarsFooter->the_post();
+				if ($getLatestCars->have_posts()) :
+					while ($getLatestCars->have_posts()) : $getLatestCars->the_post();
 
 						if ($post_number === 5) {
 							break;
@@ -239,11 +297,37 @@ function lao_get_latest_cars_footer() {
 
 						?>
 							<div>
-								<a href="<?php the_permalink() ?>"><div class="lcf_image" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>');"></div></a>
-								<div class="lcf_content">
-									<a href="<?php the_permalink() ?>"><h4><?php the_title() ?></h4></a>
-									<span><?php echo '<i class="fa fa-tachometer" aria-hidden="true"></i> ' . $get_car_meta['_mileage_value'][0] . ' KM'; ?></span>
-								</div>
+								<a href="<?php the_permalink() ?>">
+									<div class="home_new_cars">
+										<div><?php the_post_thumbnail('car_thumb_img'); ?></div>
+										<div><?php the_title(); ?></div>
+										<div>
+											<span><?php echo 'AED ' . number_format($get_car_meta['_price_value'][0]); ?></span>
+											<span><?php echo '<i class="fa fa-tachometer" aria-hidden="true"></i> ' . $get_car_meta['_mileage_value'][0] . ' KM'; ?></span>
+										</div>
+										<div>
+											<ul>
+
+												<?php if(!empty($specs['condition'])) { ?>
+													<li><?php echo $specs['condition']; ?></li>
+												<?php } ?>
+												<?php if(!empty($specs['decoded_model_year'])) { ?>
+													<li><?php echo $specs['decoded_model_year']; ?></li>
+												<?php } ?>
+												<?php if(!empty($specs['decoded_transmission_long'])) { ?>
+													<li><?php echo $specs['decoded_transmission_long']; ?></li>
+												<?php } ?>
+												<?php if(!empty($specs['exterior_color'])) { ?>
+													<li><?php echo $specs['exterior_color']; ?></li>
+												<?php } ?>
+												<?php if(!empty($specs['fuel_type'])) { ?>
+													<li><?php echo $specs['fuel_type']; ?></li>
+												<?php } ?>
+											</ul>
+										</div>
+										<div><button>View Details <i class="fa fa-arrow-right" aria-hidden="true"></i></button></div>
+									</div>
+								</a>
 							</div>
 						<?php
 						$post_number++;
@@ -254,8 +338,9 @@ function lao_get_latest_cars_footer() {
 		</div>
 
 	<?php
+	return ob_get_clean();
 }
-add_shortcode( 'footer_new_cars', 'lao_get_latest_cars_footer' );
+add_shortcode( 'new_cars', 'lao_get_latest_cars' );
 
 /* Get Blogs */
 function lao_get_blogs() {
@@ -427,13 +512,13 @@ function lao_get_our_team_board_member() {
 						<p><?php the_content(); ?></p>
 
 						<div class="links">
-							<!-- <ul>
-								<li><a href="<?php //echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="<?php //echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="<?php //echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="<?php //echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-								<li><a href="<?php //echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-							</ul> -->
+							<ul>
+								<li><a href="<?php echo esc_url( $getMetaFacebook ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaTwitter ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaInstagram ); ?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaLinkedin ); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								<li><a href="<?php echo esc_url( $getMetaEmail ); ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -522,6 +607,7 @@ add_shortcode( 'sales_team', 'lao_get_our_team_sales' );
 
 /* contact us branches */
 function lao_get_contact_us_branches() {
+
 
 	ob_start();
 
@@ -616,7 +702,7 @@ function lao_get_contact_us_branches() {
 											    						<div class="col-lg-4">
 											    							<div class="branch_info">
 											    								
-											    								<ul>
+											    								<?php /* ?><ul>
 											    									<li><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $gbcc_posts_meta_address; ?></li>
 											    									<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $gbcc_posts_meta_email_address; ?></li>
 											    									<?php  
@@ -633,7 +719,9 @@ function lao_get_contact_us_branches() {
 										    												}
 											    										}
 											    									?>
-											    								</ul>
+											    								</ul><?php */ ?>
+
+											    								<?php the_content() ?>
 
 											    							</div>
 											    						</div>
@@ -737,6 +825,8 @@ function lao_get_contact_us_branches() {
 		}
 
 	}
+
+
 
 	return ob_get_clean();
 }
@@ -897,7 +987,7 @@ function lao_get_accessories() {
 	$args = array(
 		'post_type' => array('accessories'),
 		'post_status' => array('publish'),
-		'posts_per_page' => 1,
+		'posts_per_page' => 9,
 		'order' => 'DESC',
 		'orderby' => 'date',
 		'paged' => $paged,
@@ -907,19 +997,22 @@ function lao_get_accessories() {
 
 	if ($getAccessories->have_posts()) {
 		?>
-			<div class="row">
+			<div class="row" style="padding-bottom: 60px;">
 		<?php
 		while ($getAccessories->have_posts()) {
 			$getAccessories->the_post();
+			$accessoriesImage = get_the_post_thumbnail_url(get_the_ID(), 'full');
+
 			?>
 
-				<div class="col-lg-4">
-					<div class="m_accessories">
-						<div class="ma_image"></div>
-						<h4></h4>
-						<div class="ma_price"></div>
-						<div class="ma_button"></div>
-					</div>
+				<div class="col-lg-3">
+					<a href="#accessories_inquiry_form" class="open_popup_general m_accessories_link" data-productname="<?php the_title(); ?>">
+						<div class="m_accessories">
+							<div class="ma_image"><img src="<?php echo $accessoriesImage; ?>" class="img-fluid"></div>
+							<h4><?php the_title(); ?></h4>
+							<div class="ma_button"><button>Inquire Now</button></div>
+						</div>	
+					</a>
 				</div>
 
 			<?php
@@ -932,3 +1025,119 @@ function lao_get_accessories() {
 	return ob_get_clean();
 }
 add_shortcode( 'accessories', 'lao_get_accessories' );
+
+/* Branches Shortcodes */
+function lao_get_branch_images($atts) {
+
+	$branchImages = shortcode_atts(array(
+		'branch' => 0,
+	), $atts);
+
+	ob_start();
+
+	?>
+		<div class="row branch_images">
+	<?php
+
+	if ($branchImages['branch'] > 0) {
+
+		$args = array(
+			'p' => $branchImages['branch'],
+			'post_type' => 'branches',
+			'post_status' => 'publish',
+			'order' => 'DESC',
+			'orderby' => 'date',
+		);
+
+		$getBranchImages = new WP_Query( $args );
+
+		if ($getBranchImages->have_posts()) {
+			while ($getBranchImages->have_posts()) {
+				$getBranchImages->the_post();
+
+				$images = miu_get_images(get_the_ID());
+
+				if (count($images) > 0) {
+					foreach ($images as $v_images) {
+						?>
+							<div class="col-lg-4"><div class="branch_image"><a href="<?php echo $v_images; ?>"><img src="<?php echo $v_images; ?>"></a></div></div>
+						<?php
+					}
+				} else {
+					?>
+						<div class="col-12">No Images Found.</div>
+					<?php
+				}
+			}
+		} else {
+			?>
+				<div class="col-12">No Images Found.</div>
+			<?php
+		}		
+	} else {
+		?>
+			<div class="col-12">No Images Found.</div>
+		<?php
+	}
+
+	?>
+		</div>
+	<?php
+
+	return ob_get_clean();
+
+}
+add_shortcode( 'branch_images', 'lao_get_branch_images' );
+
+function lao_get_branch_details($atts) {
+$branchImages = shortcode_atts(array(
+		'branch' => 0,
+	), $atts);
+
+	ob_start();
+
+	if ($branchImages['branch'] > 0) {
+
+		$args = array(
+			'p' => $branchImages['branch'],
+			'post_type' => 'branches',
+			'post_status' => 'publish',
+			'order' => 'DESC',
+			'orderby' => 'date',
+		);
+
+		$getBranchImages = new WP_Query( $args );
+
+		if ($getBranchImages->have_posts()) {
+			while ($getBranchImages->have_posts()) {
+				$getBranchImages->the_post();
+
+				$getBranchMap = get_post_meta( get_the_ID(), 'location', true );
+
+				?>
+					<!-- <div class="row">
+						<div class="col-12">
+							<div class="branch_showrooms"><?php //the_content(); ?></div>
+						</div>
+					</div> -->
+					<div class="row">
+						<div class="col-12">
+							<div class="branch_map_container"><?php echo $getBranchMap; ?></div>
+						</div>
+					</div>
+				<?php
+			}
+		} else {
+			?>
+				<div style="text-align: center;color: #fff;">No Images Found.</div>
+			<?php
+		}		
+	} else {
+		?>
+			<div style="text-align: center;color: #fff;">No Images Found.</div>
+		<?php
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'branch_details', 'lao_get_branch_details' );

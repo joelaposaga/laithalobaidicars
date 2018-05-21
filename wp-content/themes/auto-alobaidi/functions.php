@@ -324,6 +324,8 @@ function twentyseventeen_scripts() {
 	wp_enqueue_script( 'slick-js', get_theme_file_uri( '/libs/slick/slick.min.js' ), array(), '1.8.0', true );
 	wp_enqueue_script( 'trunk8', get_theme_file_uri( '/libs/trunk8/trunk8.js' ), array(), '1.0.0', true );
 	wp_enqueue_script( 'gsap-tweenlite', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenLite.min.js', array(), '1.20.4', true );
+	wp_enqueue_script( 'gsap-TimelineLite', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TimelineLite.min.js', array(), '1.20.4', true );
+	wp_enqueue_script( 'gsap-EasePack', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/easing/EasePack.min.js', array(), '1.20.4', true );
 	wp_enqueue_script( 'gsap-CSSPlugin', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/plugins/CSSPlugin.min.js', array(), '1.20.4', true );
 	wp_enqueue_script( 'lao_custom_scripts', get_theme_file_uri( '/js/script.js' ), array(), '1.0.0', true );
 
@@ -587,15 +589,15 @@ function lao_vdp( $content, $post_id ) {
 			$large_image = wp_get_attachment_image_src( $thumbnail->ID, 'car_thumb_img_slider', false );
 			$thumb_image = wp_get_attachment_image_src( $thumbnail->ID, 'car_thumb_img', false );
 
-			$galleryHolder .= '<div><img src="'. $large_image[0] .'" width="'. $large_image[1] .'" height="'. $large_image[2] .'"></div>';
-			$galleryThumbHolder .= '<div><img src="'. $thumb_image[0] .'" width="'. $thumb_image[1] .'" height="'. $thumb_image[2] .'"></div>';
+			$galleryHolder .= '<div><div class="vdv_image_container"><img src="'. $large_image[0] .'" width="'. $large_image[1] .'" height="'. $large_image[2] .'"></div></div>';
+			$galleryThumbHolder .= '<div><div class="vdv_image_container_small"><img src="'. $thumb_image[0] .'" width="'. $thumb_image[1] .'" height="'. $thumb_image[2] .'"></div></div>';
 		}	
 	}
 
 	if (!empty($getGalleryImages)) {
 		foreach ($galleryImages as $gi_value) {
-			$galleryHolder .= '<div><img src="'. $gi_value .'"></div>';
-			$galleryThumbHolder .= '<div><img src="'. $gi_value .'"></div>';
+			$galleryHolder .= '<div><div class="vdv_image_container"><img src="'. $gi_value .'"></div></div>';
+			$galleryThumbHolder .= '<div><div class="vdv_image_container_small"><img src="'. $gi_value .'"></div></div>';
 		}	
 	}
 
@@ -747,7 +749,7 @@ function lao_vdp( $content, $post_id ) {
     				<li><a href="" data-panel="#p_one" class="active">Specifications</a></li>
     				<li><a href="" data-panel="#p_two">Features</a></li>
     				<li><a href="" data-panel="#p_three">Safety</a></li>
-    				<li><a href="" data-panel="#p_four">Contact Us</a></li>
+    				<!--<li><a href="" data-panel="#p_four">Contact Us</a></li>-->
     			</ul>
     		</div>
     		<div class="h_panel">
@@ -837,7 +839,7 @@ function lao_vdp( $content, $post_id ) {
     					</table>
     				</div>
     			</div>
-    			<div id="p_four">
+    			<!--<div id="p_four">
     				<div class="h_panel_head">Contact Us</div>
     				<div class="inner_panel">
     					<table>
@@ -851,7 +853,7 @@ function lao_vdp( $content, $post_id ) {
 							</tr>
     					</table>
     				</div>
-    			</div>
+    			</div>-->
     		</div>
     	</div>
     </div>

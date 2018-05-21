@@ -1,0 +1,143 @@
+.branch {
+	> .branch_images {
+		margin-left: -10px;
+		margin-right: -10px;
+		margin-bottom: -20px;
+
+		> [class^="col-"] {
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-bottom: 20px;
+		}
+	}
+
+	.branch_image {
+		position: relative;
+		width: 100%;
+		padding-top: 62.5%;
+		overflow: hidden;
+
+		img {
+			position: absolute;
+			left:-10000%; 
+			right: -10000%; 
+			top: -10000%; 
+			bottom: -10000%;
+			margin: auto auto;
+			min-width: 1000%;
+			min-height: 1000%;
+			-webkit-transform:scale(0.1);
+			transform: scale(0.1);
+		}
+	}
+}
+.branch_content {
+	h3 {
+		font-weight: 700;
+		color: #fff;
+	}
+}
+.branch_showrooms {
+	display: none;
+	position: relative;
+	padding: 30px 50px;
+
+	&.slick-initialized {
+		display: block;
+	}
+
+	.slick-arrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 2;
+
+		padding: 0;
+		margin: 0;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+
+		&.slick-next {
+			right: 0;
+		}
+
+		&.slick-prev {
+			left: 0;
+		}
+	}
+
+	.slick-list {
+		background-color: rgba(0,0,0,0.3);
+	}
+
+	.branch-tile {
+		padding: 15px;
+
+		h4 {
+			text-align: center;
+			color: #ff0000;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+
+			li {
+				.fa {
+
+				}
+			}
+		}
+	}
+}
+
+.branch_showrooms_1 {
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-bottom: -30px;
+	> [class^="col-"] {
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-bottom: 30px;
+
+		.branch-tile-1 {
+			background-color: rgba(0,0,0,0.3);
+			padding: 15px 10px;
+			text-align: center;
+
+			h4 {
+				color: #ff0000;
+				text-align: center;
+				margin-bottom: 15px;
+			}
+
+			ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 0 auto;
+				display: inline-block;
+
+				li {
+					margin-bottom: 7px;
+					a {
+						.fa {
+							color: #ff0000;
+							margin-right: 5px;
+						}
+						color: #fff;
+						font-size: 1.2em;
+					}
+				}
+			}
+		}
+	}
+}

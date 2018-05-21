@@ -1,6 +1,35 @@
 jQuery(function($){
 
 	$(window).load(function(){
+
+		function initilizeAnimate() {
+			var logo = $('.lao_left_sidebar .c_logo');
+			var cdsf_item = $('.lao_left_sidebar .cdsf_item:not(.cd_hide)');
+			var submit_button = $('.lao_left_sidebar .cdsf_item .cdsf_button_box input[type="submit"]');
+			var s_social_links = $('.lao_left_sidebar .lao_lsb_container > div:nth-child(3) ul');
+
+			var menu_links = $('.lao_right_sidebar .lao_lrb_container .main_menu > div > ul > li > a').get().reverse();
+			var lang_switcher = $('.lao_right_sidebar .lao_lrb_container .lang-switcher>select');
+			var contact_details = $('.contact_details ul li a');
+			var join_us = $('.lao_right_sidebar .lao_lrb_container .join_us a');
+
+			var tl = new TimelineLite();
+			var tl1 = new TimelineLite();
+
+			tl
+				.to(logo, 0.5, {scale: 1})
+				.staggerTo(cdsf_item, 0.5, {top: 0, opacity: 1, ease: Power0.easeNone}, 0.3)
+				.to(submit_button, 0.5, {scale: 1})
+				.to(s_social_links, 0.5, {marginLeft: 0, opacity: 1});
+
+			tl1
+				.staggerTo(menu_links, 1, {top: 0, opacity: 1, ease: Back.easeInOut.config(3)}, 0.2)
+				.to(lang_switcher, 0.5, {right: 0})
+				.staggerTo(contact_details, 0.5, {right: 0}, 0.1)
+				.to(join_us, 0.5, {scale: 1});
+
+		}
+
 		$('.blinder.logo img').animate({
 			opacity: '0',
 			visibility: 'hidden',
@@ -11,11 +40,20 @@ jQuery(function($){
 			});
 			$('.blinder.b_right').css({
 				left: '100%',
-			})
-		})
+			});
+			$('body').addClass('initilized');
+
+			if ($('body').hasClass('initilized')) {
+				setTimeout(function(){
+					initilizeAnimate();
+				}, 600);	
+			}
+		});
+		
 	})
 
 	$(document).ready(function() {
+		
 		
 		/* car demon form */
 
@@ -47,11 +85,12 @@ jQuery(function($){
 
 		$('#footer_car_logo').slick({
 			infinite: true,
-			slidesToShow: 8,
+			slidesToShow: 5,
 			slidesToScroll: 5,
 			arrows: false,
 			autoplay: true,
 			autoplaySpeed: 2000,
+			variableWidth: true,
 		});
 
 		$('.vdv_image_view .large').slick({
@@ -63,13 +102,31 @@ jQuery(function($){
 
 		$('.vdv_image_view .thumb').slick({
 			slidesToShow: 5,
-			slidesToScroll: 3,
+			slidesToScroll: 5,
 			asNavFor: '.vdv_image_view .large',
 			dots: false,
-			centerMode: true,
+			centerMode: false,
 			focusOnSelect: true,
 			prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>',
 			nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>',
+		});
+
+		$('.branch_showrooms').slick({
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true,
+			prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>',
+			nextArrow: '<button type="button" class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>'
+		});
+
+		$('.latest_cars').slick({
+			infinite: true,
+			slidesToShow: 3,
+			slidesToScroll: 3,
+			arrows: true,
+			prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>',
+			nextArrow: '<button type="button" class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>'
 		});
 
 
@@ -177,13 +234,57 @@ jQuery(function($){
 			lines: 3,
 		});
 
+		$('.m_accessories h4').trunk8({
+			lines: 2,
+		});
+
 		$('.main_menu .menu-item-has-children > a').click(function(e){
 			e.preventDefault();
-			$(this).next().slideToggle();
+			$(this).next().slideToggle(200);
 		});
 
 		$(".selectBox .selectOptions").click(function(){
 			$(this).css({'display':'none'});
+		});
+
+		$('.branch_images').magnificPopup({
+			delegate: 'a',
+			type: 'image',
+			tLoading: 'Loading image #%curr%...',
+			mainClass: 'mfp-img-mobile',
+			gallery: {
+				enabled: true,
+				navigateByImgClick: true,
+				preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+			},
+			image: {
+				tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			}
+		});
+
+		/* find the tallest div */
+
+		var branchTile1 = $('.branch-tile-1');
+		var home_new_cars = $('.home_new_cars');
+		var bm_tile = $('.bm_tile');
+		var a_accessories = $('.a_accessories');
+
+		function divSameHeight (selector) {
+			var maxHeight = 0;
+			selector.each(function(){
+				if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+			});
+			selector.height(maxHeight);
+		}
+
+		divSameHeight(branchTile1);
+		divSameHeight(home_new_cars);
+		divSameHeight(bm_tile);
+		divSameHeight(a_accessories);
+
+		$('.accessories .m_accessories_link').click(function(){
+			var textareaValue = 'Hi, I wanted to know more about ' + $(this).data('productname') + '. Please send me an email or contact me on my number.';
+			$('#accessories_inquiry_form').find('textarea').val(textareaValue);
 		});
 
 	});

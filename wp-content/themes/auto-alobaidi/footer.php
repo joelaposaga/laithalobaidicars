@@ -18,7 +18,7 @@
 				<div class="col-lg-5">
 					<div class="fm_tile about_footer">
 
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><h2><img src="<?php echo site_url( '/' ); ?>wp-content/uploads/2018/04/laith-al-obaidi-logo.png"> Laith Al Obaidi Cars Trading LLC</h2></a>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><h2><img src="<?php echo site_url( '/' ); ?>wp-content/uploads/2018/05/LAITH-ALOBAIDI-NEW-LOGOdESIGNbY-ASMAA.png"> Laith Al Obaidi Cars Trading LLC</h2></a>
 
 						<p>Laith AlObaidi Co. succeeded in setting a Quality Standard that has been a benchmark the automotive industry in the Middle East.</p>
 
@@ -42,11 +42,11 @@
 							<ul>
 								<li>
 									<h4>Sales Department</h4>
-									<p>Sat - Friday : 8:00am - 8:00pm</p>
+									<p>Sat - Friday : 9:00am - 8:00pm</p>
 								</li>
 								<li>
 									<h4>Service Department</h4>
-									<p>Sat - Thurs : 8:00am - 8:00pm</p>
+									<p>Sat - Thurs : 9:00am - 8:00pm</p>
 									<p>Friday is closed</p>
 								</li>
 							</ul>
@@ -66,15 +66,17 @@
 				<div class="col-lg-3">
 					<div class="fm_tile f_links">
 						<ul>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Our Stocks</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Services</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> About Us</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Read Our Blog</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Events</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Contact Us</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Terms and Conditions</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Privacy Policy</a></li>
-							<li><a href=""><i class="fa fa-circle" aria-hidden="true"></i> Sitemap</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>car-stocks/"><i class="fa fa-circle" aria-hidden="true"></i> Our Stocks</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>trade-in/"><i class="fa fa-circle" aria-hidden="true"></i> Trade In</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>shipping/"><i class="fa fa-circle" aria-hidden="true"></i> Shipping</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>finance/"><i class="fa fa-circle" aria-hidden="true"></i> Finance</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>who-we-are/"><i class="fa fa-circle" aria-hidden="true"></i> Who We Are</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>blogs/"><i class="fa fa-circle" aria-hidden="true"></i> Read Our Blog</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>events/"><i class="fa fa-circle" aria-hidden="true"></i> Events</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>contact-us/"><i class="fa fa-circle" aria-hidden="true"></i> Contact Us</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>terms-and-conditions/"><i class="fa fa-circle" aria-hidden="true"></i> Terms and Conditions</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>privacy-policy/"><i class="fa fa-circle" aria-hidden="true"></i> Privacy Policy</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>sitemap/"><i class="fa fa-circle" aria-hidden="true"></i> Sitemap</a></li>
 						</ul>
 					</div>
 				</div>
@@ -94,7 +96,7 @@
 
 <!-- blinder -->
 <div class="blinder b_left"></div>
-<div class="blinder logo"><img src="<?php echo site_url( '/' ); ?>wp-content/uploads/2018/04/laith-al-obaidi-logo.png"></div>
+<div class="blinder logo"><img src="<?php echo site_url( '/' ); ?>wp-content/uploads/2018/05/LAITH-ALOBAIDI-NEW-LOGOdESIGNbY-ASMAA.png"></div>
 <div class="blinder b_right"></div>
 
 <!-- Universal Modals -->

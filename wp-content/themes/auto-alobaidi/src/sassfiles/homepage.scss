@@ -1,0 +1,52 @@
+.latest_cars {
+	display: none;
+
+	margin-right: -15px;
+	margin-left: -15px;
+	padding-bottom: 40px;
+
+	&.slick-initialized {
+		display: block;
+	}
+
+	.slick-arrow {
+		position: absolute;
+		top: calc(100% - 50px);
+		z-index: 2;
+
+		padding: 0;
+		margin: 0;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		background-color: transparent;
+
+		font-size: 1.5em;
+
+		&.slick-next {
+			right: calc(50% - 40px);
+		}
+
+		&.slick-prev {
+			left: calc(50% - 40px);
+		}
+
+		&:hover {
+			color: #ff0000;
+		}
+	}
+
+	.home_new_cars {
+		padding-left: 15px;
+		padding-right: 15px;
+		
+		> div {
+			&:nth-child(5) {
+				right: 15px;
+			}
+		}
+	}
+}

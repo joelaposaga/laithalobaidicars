@@ -52,30 +52,29 @@
 		.branch_info {
 			padding: 25px 15px;
 
-			ul {
-				padding: 0;
-				margin: 0;
-				list-style-type: none;
+			.branch-tile {
+				margin-bottom: 10px;
+				h4 {
+					color: #ff0000;
+					font-size: 0.9em;
+				}
 
-				li {
-					position: relative;
-					padding-left: 35px;
-					color: #fff;
-					margin-bottom: 15px;
+				ul {
+					list-style-type: none;
+					padding: 0;
+					margin: 0;
 
-					a {
-						color: #fff;
+					li {
+						margin-bottom: 5px;
+
+						.fa {
+							margin-right: 5px;
+						}
 					}
+				}
 
-					.fa {
-						position: absolute;
-						left: 0;
-						top: 0;
-						color: #ff0000;
-						font-size: 1.5em;
-						width: 30px;
-						text-align: center;
-					}
+				&:last-child {
+					margin-bottom: 0;
 				}
 			}
 		}
