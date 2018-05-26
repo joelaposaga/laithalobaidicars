@@ -3,8 +3,8 @@
 	<?php get_template_part( 'template-parts/sidebars/sidebar', 'right' ); ?>
 </div>
 <footer>
-	<div class="footer_top" style="padding-left: 200px;padding-right: 200px;">
-		<div class="container" style="">
+	<div class="footer_top main_container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
 					<div id="footer_car_logo"><?php echo do_shortcode('[footer_car_logo]'); ?></div>
@@ -12,7 +12,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer_middle" style="padding-left: 200px;padding-right: 200px;">
+	<div class="footer_middle main_container">
 		<div class="container" style="max-width: 992px;">
 			<div class="row">
 				<div class="col-lg-5">
@@ -35,7 +35,7 @@
 						<!-- <h3><div class="thin-palallelogram"><span>/</span><span>/</span></div>Latest Autos</h3> -->
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-sm-6">
 					<div class="fm_tile opening_branches">
 						<div class="opening">
 							<h3><div class="thin-palallelogram"><span>/</span><span>/</span></div>Opening Hours</h3>
@@ -54,16 +54,15 @@
 						<div class="branches">
 							<h3><div class="thin-palallelogram"><span>/</span><span>/</span></div>Branches</h3>
 							<ul>
-								<li><a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i> Dubai Branch</a></li>
-								<li><a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i> Sharjah Branch</a></li>
-								<li><a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i> Abu Dhabi Branch</a></li>
-								<li><a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i> Jordan Branch</a></li>
-								<li><a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i> Iraq Branch</a></li>
+								<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>dubai-branch"><i class="fa fa-arrow-right" aria-hidden="true"></i> Dubai Branch</a></li>
+								<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>sharjah-branch"><i class="fa fa-arrow-right" aria-hidden="true"></i> Sharjah Branch</a></li>
+								<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>jordan-branch"><i class="fa fa-arrow-right" aria-hidden="true"></i> Jordan Branch</a></li>
+								<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>iraq-branch"><i class="fa fa-arrow-right" aria-hidden="true"></i> Iraq Branch</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-3 col-sm-6">
 					<div class="fm_tile f_links">
 						<ul>
 							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>car-stocks/"><i class="fa fa-circle" aria-hidden="true"></i> Our Stocks</a></li>
@@ -95,9 +94,18 @@
 </footer>
 
 <!-- blinder -->
-<div class="blinder b_left"></div>
-<div class="blinder logo"><img src="<?php echo site_url( '/' ); ?>wp-content/uploads/2018/05/LAITH-ALOBAIDI-NEW-LOGOdESIGNbY-ASMAA.png"></div>
-<div class="blinder b_right"></div>
+<?php  
+	if (is_front_page()) {
+		?>
+
+			<div class="blinder b_left"></div>
+			<div class="blinder logo"><img src="<?php echo site_url( '/' ); ?>wp-content/uploads/2018/05/LAITH-ALOBAIDI-NEW-LOGOdESIGNbY-ASMAA.png"></div>
+			<div class="blinder b_right"></div>		
+
+		<?php
+	}
+?>
+
 
 <!-- Universal Modals -->
 <div id="inquiry_form" class="white-popup mfp-hide" data-form-car="">

@@ -8,7 +8,21 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-ishomepage="<?php echo (is_front_page() ? 'true' : 'false'); ?>">
+
+<header>
+	<div class="container-fluid">
+		<div class="logo">
+			<a href=""><img src="<?php echo get_template_directory_uri() ?>/images/logo-wide.png"></a>
+		</div>	
+		<div class="menu">
+			<ul>
+				<li><a href="" class="search_menu"><i class="fa fa-search" aria-hidden="true"></i><span>Search Our Stock</span></a></li>
+				<li><a href="" class="menu_menu"><i class="fa fa-bars" aria-hidden="true"></i><span>Menu</span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
 
 <div class="lao_left_sidebar">
 	<?php get_template_part( 'template-parts/sidebars/sidebar', 'left' ); ?>

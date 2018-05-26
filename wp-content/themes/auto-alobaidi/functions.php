@@ -754,7 +754,7 @@ function lao_vdp( $content, $post_id ) {
     		</div>
     		<div class="h_panel">
     			<div id="p_one" class="active_panel">
-    				<div class="h_panel_head" class="active">Specifications</div>
+    				<div class="h_panel_head active" data-panel="#p_one">Specifications<i class="fa fa-arrow-right" aria-hidden="true"></i></div>
     				<div class="inner_panel">
     					<table>
     						<tr>
@@ -790,7 +790,7 @@ function lao_vdp( $content, $post_id ) {
     				</div>
     			</div>
     			<div id="p_two">
-    				<div class="h_panel_head">Features</div>
+    				<div class="h_panel_head" data-panel="#p_two">Features <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
     				<div class="inner_panel">
     					<table>
 							<tr>
@@ -825,7 +825,7 @@ function lao_vdp( $content, $post_id ) {
     				</div>
     			</div>
     			<div id="p_three">
-    				<div class="h_panel_head">Safety</div>
+    				<div class="h_panel_head" data-panel="#p_three">Safety <i class="fa fa-arrow-right" aria-hidden="true"></i></div>
     				<div class="inner_panel">
     					<table>
 							<tr>

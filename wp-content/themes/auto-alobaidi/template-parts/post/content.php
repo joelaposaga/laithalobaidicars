@@ -6,7 +6,7 @@
 	?>
 </div>
 
-<div class="container single_blog_content" style="max-width: 992px; padding-top: 15px; padding-bottom: 30px;">
+<div class="container single_blog_content">
 	<div class="row">
 		
 			<?php  

@@ -10,7 +10,7 @@ get_header(); ?>
 					?>
 
 						<div class="slider"><?php echo do_shortcode( '[smartslider3 slider=2]' ); ?></div>
-						<div style="background-image:url('<?php echo site_url(); ?>/wp-content/uploads/2018/04/background.jpg');background-size:cover;background-repeat:no-repeat;background-position:center top;background-attachment:fixed;padding-left:200px;padding-right:200px;">
+						<div class="main_container" style="background-image:url('<?php echo site_url(); ?>/wp-content/uploads/2018/04/background.jpg');background-size:cover;background-repeat:no-repeat;background-position:center top;background-attachment:fixed;">
 
 							<?php
 								the_content();

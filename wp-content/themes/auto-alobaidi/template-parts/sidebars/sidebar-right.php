@@ -28,7 +28,7 @@
 					if ($gcp_key == 'phone') {
 					?>
 
-						<li><a href=""><i class="fa fa-phone" aria-hidden="true"></i><?php echo $gcp_value; ?></a></li>
+						<li><a href="tel:<?php echo $gcp_value; ?>"><i class="fa fa-phone" aria-hidden="true"></i><?php echo $gcp_value; ?></a></li>
 
 					<?php
 					}
@@ -36,7 +36,7 @@
 					if ($gcp_key == 'contact-email') {
 					?>
 
-						<li><a href=""><i class="fa fa-envelope-o" aria-hidden="true"></i><?php echo $gcp_value; ?></a></li>
+						<li><a href="mailto:<?php echo $gcp_value; ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i><?php echo $gcp_value; ?></a></li>
 
 					<?php
 					}

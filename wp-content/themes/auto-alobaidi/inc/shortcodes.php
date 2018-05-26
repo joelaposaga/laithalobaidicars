@@ -206,9 +206,9 @@ function lao_get_monthly_deals_car() {
 					$specs = unserialize($get_car_meta['decode_string'][0]);
 
 				?>
-					<div class="col-lg-4">
+					<div class="col-lg-4 col-md-6">
 						<a href="<?php the_permalink() ?>">
-							<div class="home_new_cars">
+							<div class="home_monthly_deal_cars">
 								<div><?php the_post_thumbnail('car_thumb_img'); ?></div>
 								<div><?php the_title(); ?></div>
 								<div>
@@ -247,7 +247,7 @@ function lao_get_monthly_deals_car() {
 			endif;
 
 			?>
-			<div class="col-12" style="text-align: right;">
+			<div class="col-12 home_load_more_container">
 				<a href="<?php echo home_url(); ?>/car-stocks/" class="load_more">Load More <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
 			</div>
 		</div>
@@ -505,9 +505,9 @@ function lao_get_our_team_board_member() {
 			
 			?>
 
-				<div class="col-lg-6">
+				<div class="col-md-6 col-12">
 					<div class="bm_tile">
-						<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>">
+						<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>" class="framed-bg">
 						<h4><?php the_title(); ?></h4>
 						<p><?php the_content(); ?></p>
 
@@ -563,7 +563,7 @@ function lao_get_our_team_sales() {
 
 			?>
 
-				<div class="col-lg-4">
+				<div class="col-md-4 col-sm-6 col-12">
 					<div class="bm_tile">
 						<img src="<?php echo $getSalesImage; ?>">
 						<h4><?php the_title(); ?></h4>
@@ -696,7 +696,7 @@ function lao_get_contact_us_branches() {
 														?>
 
 															<div id="p_<?php echo $gbcc_count; ?>" class="<?php echo ($gbcc_count === 1 ? 'active_panel' : ''); ?>">
-											    				<div class="h_panel_head" class="<?php echo ($gbcc_count === 1 ? 'active' : ''); ?>"><?php echo $gbcc_term->name; ?></div>
+											    				<div class="h_panel_head <?php echo ($gbcc_count === 1 ? 'active' : ''); ?>" data-panel="#p_<?php echo $gbcc_count; ?>"><?php echo $gbcc_term->name; ?><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
 											    				<div class="inner_panel">
 											    					<div class="row">
 											    						<div class="col-lg-4">
@@ -861,7 +861,7 @@ function lao_get_testimonials() {
 					$avatar = (empty($testimonialAvatar) ? content_url() . '/uploads/2018/05/avatar.jpg' : $testimonialAvatar );
 
 					?>
-						<div class="col-lg-6">
+						<div class="col-md-6">
 							<div class="testimonial">
 								<div class="says">
 									<p><?php the_content(); ?></p>
@@ -952,7 +952,7 @@ function lao_get_career() {
 		?>
 					</div>
 				</div>
-			<div class="col-12">
+			<?php /* ?><div class="col-12">
 				<div class="page_navigation">
 					<?php 
 						echo paginate_links(
@@ -965,7 +965,7 @@ function lao_get_career() {
 						); 
 					?>
 				</div>
-			</div>
+			</div> <?php */ ?>
 			<?php wp_reset_postdata(); ?>
 		<?php
 	} else {
@@ -1005,7 +1005,7 @@ function lao_get_accessories() {
 
 			?>
 
-				<div class="col-lg-3">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 					<a href="#accessories_inquiry_form" class="open_popup_general m_accessories_link" data-productname="<?php the_title(); ?>">
 						<div class="m_accessories">
 							<div class="ma_image"><img src="<?php echo $accessoriesImage; ?>" class="img-fluid"></div>
@@ -1060,7 +1060,7 @@ function lao_get_branch_images($atts) {
 				if (count($images) > 0) {
 					foreach ($images as $v_images) {
 						?>
-							<div class="col-lg-4"><div class="branch_image"><a href="<?php echo $v_images; ?>"><img src="<?php echo $v_images; ?>"></a></div></div>
+							<div class="col-md-4 col-sm-6 col-12"><div class="branch_image"><a href="<?php echo $v_images; ?>"><img src="<?php echo $v_images; ?>"></a></div></div>
 						<?php
 					}
 				} else {
