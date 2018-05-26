@@ -1,11 +1,13 @@
 <div class="lao_lrb_container">
 	<div class="lang-switcher">
-		<?php
+		<div id="weglot_here"></div>
+		<?php /*
 			$args = array(
 				'dropdown' => 1,
 				'show_flags' => true
 			);
 			pll_the_languages($args);
+			*/
 		?>
 	</div>	
 	<div class="main_menu">
@@ -51,4 +53,3 @@
 </div>
 
 <div id="to_top"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-

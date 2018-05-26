@@ -1,0 +1,48 @@
+html[dir="rtl"] {
+	.lao_ls_search .cdsf_item .selectBox .selectArrow {
+		position: relative;
+		right: 4px;
+	}
+	.lao_ls_search .cdsf_item .selectBox .selected {
+	    padding-right: 22px;
+	}
+	.lao_right_sidebar .lao_lrb_container .main_menu>div>ul>li>a {
+	    padding-right: 20px;
+	}
+	.lao_right_sidebar .lao_lrb_container .contact_details ul li a .fa {
+    	margin-right: 0px;
+	    margin-left: 5px;
+	}
+	footer .footer_middle .fm_tile.f_links ul li a .fa {
+	    margin-right: 0px;
+	    margin-left: 10px;
+	}
+	footer .footer_middle .fm_tile.opening_branches .branches ul li a .fa {
+	    margin-right: 0px;
+	    margin-left: 10px;
+	}
+	footer .footer_middle .fm_tile.about_footer h2 img {
+	    margin-right: 0px;
+	    margin-left: 10px;
+	}
+	footer .footer_middle .fm_tile.about_footer .f_contact ul li a .fa {
+	    margin-right: 0px;
+	    margin-left: 5px;
+	}
+	.thin-palallelogram {
+	    margin-right: 0px;
+	    margin-left: 10px;
+	}
+	.car_lists_filter form {
+		#cd_sort_by_label, select {
+			display: none;
+		}
+	}
+	.car_lists_filter form span {
+	    margin-right: 0px;
+	    margin-left: 10px;
+	}
+	.car_lists_item {
+		padding-right: 25px;
+	}
+}

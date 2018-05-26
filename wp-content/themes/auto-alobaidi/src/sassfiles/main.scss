@@ -491,13 +491,15 @@ header {
 						align-items: center;
 						color: #fff;
 						padding: 7px 0;
+						font-size: 0.8em;
+						white-space: nowrap;
 
 						/* put in media */
 						position: relative;
 						right: -200px;
 
 						.fa {
-							margin-right: 10px;
+							margin-right: 5px;
 							font-size: 1.5em;
 						}
 					}
@@ -1587,3 +1589,4 @@ footer {
 @import 'extension.scss';
 @import '_common.scss';
 @import 'media@large.scss';
+@import 'rtl-styles';

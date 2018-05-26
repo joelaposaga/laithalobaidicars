@@ -64,6 +64,20 @@ jQuery(function($){
 		} else {
 			initilizeAnimate(false);
 		}
+
+		if ($('html').attr('dir') === 'rtl') {
+
+			$('.car_lists_filter').wrapInner('<form id="frm_cd_sort" name="frm_cd_sort" action="" method="get"></form>');
+
+			$('.car_lists_filter h3').each(function(){
+				$(this).insertBefore($(this).parent());
+			});
+
+			$('.car_lists_filter form #cd_sort_by_label').css({ display : 'inline-block'});
+			$('.car_lists_filter form select').css({ display : 'inline-block'});
+
+			//$('.car_lists_filter').children().not('h3').wrapAll('<form id="frm_cd_sort" name="frm_cd_sort" action="" method="get"></form>');
+		}
 		
 	})
 
@@ -134,6 +148,7 @@ jQuery(function($){
 			slidesToShow: 3,
 			slidesToScroll: 3,
 			arrows: false,
+			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 			responsive: [
 				{
 					breakpoint: 768,
@@ -171,19 +186,22 @@ jQuery(function($){
 			autoplay: true,
 			autoplaySpeed: 2000,
 			variableWidth: true,
+			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 		});
 
 		$('.vdv_image_view .large').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: false,
-			asNavFor: '.vdv_image_view .thumb'
+			asNavFor: '.vdv_image_view .thumb',
+			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 		});
 
 		$('.vdv_image_view .thumb').slick({
 			slidesToShow: 5,
 			slidesToScroll: 5,
 			asNavFor: '.vdv_image_view .large',
+			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 			dots: false,
 			centerMode: false,
 			focusOnSelect: true,
@@ -212,6 +230,7 @@ jQuery(function($){
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: true,
+			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 			prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>',
 			nextArrow: '<button type="button" class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>'
 		});
@@ -221,6 +240,7 @@ jQuery(function($){
 			slidesToShow: 3,
 			slidesToScroll: 3,
 			arrows: true,
+			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 			prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>',
 			nextArrow: '<button type="button" class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>',
 			responsive: [

@@ -15,3 +15,23 @@ job description
 
 -make contact us dynamic
 -make our team dynamic
+
+
+car details page - its not good and will be redundant the title text will be overlapped by car image. 
+Picture Gallery - give images to put in the page
+give us the content and images in trade in page
+give us the content and images in shiipping page
+finance this we are not going to check because it depends on your company about the computation
+sliding image is enough with different artworks
+please give time and confirm if we will be using weglot plugin
+give us sample brochure so i can test
+give us sample car specifications so that i cantest
+give us different images for every header pages
+give us image sliders for home page
+social media links username and password
+give us images for branches content and other details
+blogs
+events
+testimonials
+terms and conditions
+privacy policy and etc.
