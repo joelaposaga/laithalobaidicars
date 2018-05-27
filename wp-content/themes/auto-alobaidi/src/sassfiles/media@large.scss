@@ -431,6 +431,21 @@
 		}
 	}
 
+	.contact_us {
+		.branches {
+			.branch_info_new {
+				> div {
+					&:first-child {
+						.branch-tile {
+							flex: 0 0 50%;
+							width: 50%;
+						}
+					}
+				}
+			}
+		}
+	}
+
 }
 
 @media only screen and (min-width: 576px) {

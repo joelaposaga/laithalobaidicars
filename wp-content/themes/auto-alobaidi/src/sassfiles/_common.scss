@@ -429,6 +429,12 @@ img.framed-bg {
 			color: #ff0000;
 		}
 	}
+
+	&.popup-map {
+		padding: 0;
+		overflow: hidden;
+		max-width: 768px;
+	}
 }
 
 .lao_form {
@@ -590,4 +596,28 @@ div.wpcf7-mail-sent-ng:before, div.wpcf7-spam-blocked:before {
 .single_car_slider_image {
 	max-width: 992px;
 	max-height: 533px;
+}
+.page_not_found {
+	text-align: center;
+
+	h2 {
+		color: #fff;
+		font-weight: 700;
+		font-size: 5em;
+		line-height: 1;
+		margin-bottom: 30px;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	> div {
+		a {
+			display: inline-block;
+			color: #fff;
+			background-color: #ff0000;
+			padding: 7px 15px;
+		}
+	}
 }

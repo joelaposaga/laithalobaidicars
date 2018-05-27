@@ -352,7 +352,7 @@ function lao_get_blogs() {
 	$args = array(
 		'post_type' => array('post'),
 		'post_status' => array('publish'),
-		'posts_per_page' => 1,
+		'posts_per_page' => 9,
 		'order' => 'DESC',
 		'orderby' => 'date',
 		'paged' => $paged,
@@ -698,11 +698,11 @@ function lao_get_contact_us_branches() {
 															<div id="p_<?php echo $gbcc_count; ?>" class="<?php echo ($gbcc_count === 1 ? 'active_panel' : ''); ?>">
 											    				<div class="h_panel_head <?php echo ($gbcc_count === 1 ? 'active' : ''); ?>" data-panel="#p_<?php echo $gbcc_count; ?>"><?php echo $gbcc_term->name; ?><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
 											    				<div class="inner_panel">
-											    					<div class="row">
+											    					<?php /* ?><div class="row">
 											    						<div class="col-lg-4">
 											    							<div class="branch_info">
 											    								
-											    								<?php /* ?><ul>
+											    								<ul>
 											    									<li><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $gbcc_posts_meta_address; ?></li>
 											    									<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $gbcc_posts_meta_email_address; ?></li>
 											    									<?php  
@@ -719,7 +719,7 @@ function lao_get_contact_us_branches() {
 										    												}
 											    										}
 											    									?>
-											    								</ul><?php */ ?>
+											    								</ul>
 
 											    								<?php the_content() ?>
 
@@ -729,6 +729,18 @@ function lao_get_contact_us_branches() {
 											    							<div>
 											    								<?php echo $gbcc_posts_meta_map; ?>
 											    							</div>
+											    						</div>
+											    					</div><?php */ ?>
+
+											    					<div class="branch_info_new">
+											    						<div>
+											    							<?php the_content() ?>
+											    						</div>
+											    						<div>
+											    							<a href="#contact_us_map_<?php echo $gbcc_count; ?>" class="open_popup_general"><i class="fa fa-map" aria-hidden="true"></i> View Map </a>
+											    							<div id="contact_us_map_<?php echo $gbcc_count; ?>" class="white-popup popup-map mfp-hide">
+																				<?php echo $gbcc_posts_meta_map; ?>
+																			</div>
 											    						</div>
 											    					</div>
 											    				</div>
@@ -1141,3 +1153,12 @@ $branchImages = shortcode_atts(array(
 	return ob_get_clean();
 }
 add_shortcode( 'branch_details', 'lao_get_branch_details' );
+
+function lao_get_site_url() {
+	ob_start();
+
+	echo site_url();
+
+	return ob_get_clean();
+}
+add_shortcode( 'site_url', 'lao_get_site_url' );
