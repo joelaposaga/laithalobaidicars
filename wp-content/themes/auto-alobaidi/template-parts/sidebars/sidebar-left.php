@@ -4,13 +4,4 @@
 		<h4>Search Our Stock</h4>
 		<?php echo do_shortcode( '[pro_search title="Find Your Cars" custom_class="lao_ls_search" hide_location="on" style="" hide_year_range="on" hide_mileage="on" label_make="Brands" label_condition="Category"]' ) ?>
 	</div>
-	<div>
-		<?php  
-			$args = array(
-				'theme_location' => 'social',
-				'container' => ''
-			);
-			wp_nav_menu( $args );
-		?>
-	</div>
 </div>

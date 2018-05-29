@@ -2,15 +2,28 @@ jQuery(function($){
 
 	$(window).load(function(){
 
+		function activeMapHeight() {
+			var getActiveMapHeight = $('[data-position="0"]').outerHeight();
+			$('.portal_container .maps').height(getActiveMapHeight);
+		}
+
+		activeMapHeight();
+
+		const ps_left = new PerfectScrollbar('.lao_left_sidebar');
+		ps_left.update();
+
+		const ps_right = new PerfectScrollbar('.lao_right_sidebar');
+		ps_right.update();
+
 		function initilizeAnimate(is_homepage) {
 			var logo = $('.lao_left_sidebar .c_logo');
 			var searchourStock = $('.lao_left_sidebar h4');
 			var cdsf_item = $('.lao_left_sidebar .cdsf_item:not(.cd_hide)');
 			var submit_button = $('.lao_left_sidebar .cdsf_item .cdsf_button_box input[type="submit"]');
-			var s_social_links = $('.lao_left_sidebar .lao_lsb_container > div:nth-child(3) ul');
 
+			var s_social_links = $('.lao_right_sidebar .lao_lrb_container .lao_social_media ul');
 			var menu_links = $('.lao_right_sidebar .lao_lrb_container .main_menu > div > ul > li > a').get().reverse();
-			var lang_switcher = $('.lao_right_sidebar .lao_lrb_container .lang-switcher>select');
+			var lang_switcher = $('.lao_right_sidebar .lao_lrb_container .lang-switcher .country-selector');
 			var contact_details = $('.contact_details ul li a');
 			var join_us = $('.lao_right_sidebar .lao_lrb_container .join_us a');
 
@@ -21,12 +34,12 @@ jQuery(function($){
 				.to(logo, 0.5, {scale: 1})
 				.to(searchourStock, 0.5, {visibility: 'visible', opacity: 1})
 				.staggerTo(cdsf_item, 0.5, {top: 0, opacity: 1, ease: Power0.easeNone}, 0.3)
-				.to(submit_button, 0.5, {scale: 1})
-				.to(s_social_links, 0.5, {marginLeft: 0, opacity: 1});
+				.to(submit_button, 0.5, {scale: 1});
 
 			tl1
 				.staggerTo(menu_links, 1, {top: 0, opacity: 1, ease: Back.easeInOut.config(3)}, 0.2)
-				.to(lang_switcher, 0.5, {right: 0})
+				.to(lang_switcher, 0.5, {left: 0})
+				.to(s_social_links, 0.5, {marginRight: 0, opacity: 1})
 				.staggerTo(contact_details, 0.5, {right: 0}, 0.1)
 				.to(join_us, 0.5, {scale: 1});
 
@@ -193,6 +206,8 @@ jQuery(function($){
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: false,
+			autoplay: true,
+			autoplaySpeed: 2000,
 			asNavFor: '.vdv_image_view .thumb',
 			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 		});
@@ -203,7 +218,7 @@ jQuery(function($){
 			asNavFor: '.vdv_image_view .large',
 			rtl: $('html').attr('dir') === 'rtl' ? true : false,
 			dots: false,
-			centerMode: false,
+			centerMode: true,
 			focusOnSelect: true,
 			prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>',
 			nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>',
@@ -404,6 +419,21 @@ jQuery(function($){
 		});
 
 		$('.branch_images').magnificPopup({
+			delegate: 'a',
+			type: 'image',
+			tLoading: 'Loading image #%curr%...',
+			mainClass: 'mfp-img-mobile',
+			gallery: {
+				enabled: true,
+				navigateByImgClick: true,
+				preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+			},
+			image: {
+				tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			}
+		});
+
+		$('.gallery_images').magnificPopup({
 			delegate: 'a',
 			type: 'image',
 			tLoading: 'Loading image #%curr%...',

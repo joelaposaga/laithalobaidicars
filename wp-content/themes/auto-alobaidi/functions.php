@@ -186,6 +186,11 @@ function twentyseventeen_setup() {
 }
 add_action( 'after_setup_theme', 'twentyseventeen_setup' );
 
+/*function lao_remove_rich_edit() {
+
+}*/
+add_filter( 'user_can_richedit' , '__return_false', 50 );
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -315,6 +320,7 @@ function twentyseventeen_scripts() {
 	wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'font-awesome', get_theme_file_uri('/libs/font-awesome/css/font-awesome.min.css'), array(), '4.7.0');
 	wp_enqueue_style( 'slick-css', get_theme_file_uri('/libs/slick/slick.css'), array(), '1.8.0');
+	wp_enqueue_style( 'perfect-scrollbar-css', get_theme_file_uri('/libs/perfect-scrollbar/perfect-scrollbar.css'), array(), '1.3.0');
 	wp_enqueue_style( 'magnific-popup-css', get_theme_file_uri('/libs/magnific-popup/magnific-popup.css'), array(), '1.1.0');
 	wp_enqueue_style( 'bootstrap-grid', get_theme_file_uri('/libs/bootstrap-grid/bootstrap-grid.min.css'), array(), '4.1.0');
 	wp_enqueue_style( 'lao_custom_styles', get_theme_file_uri('/css/style.css'), array(), '1.0.0');
@@ -323,6 +329,7 @@ function twentyseventeen_scripts() {
 	wp_enqueue_script( 'magnific-popup-js', get_theme_file_uri( '/libs/magnific-popup/jquery.magnific-popup.min.js' ), array(), '1.1.0', true );
 	wp_enqueue_script( 'slick-js', get_theme_file_uri( '/libs/slick/slick.min.js' ), array(), '1.8.0', true );
 	wp_enqueue_script( 'trunk8', get_theme_file_uri( '/libs/trunk8/trunk8.js' ), array(), '1.0.0', true );
+	wp_enqueue_script( 'perfect-scrollbar-js', get_theme_file_uri( '/libs/perfect-scrollbar/perfect-scrollbar.js' ), array(), '1.3.0', true );
 	wp_enqueue_script( 'gsap-tweenlite', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenLite.min.js', array(), '1.20.4', true );
 	wp_enqueue_script( 'gsap-TimelineLite', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TimelineLite.min.js', array(), '1.20.4', true );
 	wp_enqueue_script( 'gsap-EasePack', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/easing/EasePack.min.js', array(), '1.20.4', true );
@@ -725,6 +732,13 @@ function lao_vdp( $content, $post_id ) {
 
 	}
 
+	/* get brochure */
+	$getBrochure = get_field('car_brochure');
+	$getBrochureUrl = ( !empty($getBrochure['url']) ? $getBrochure['mime_type'] == 'application/pdf' ? $getBrochure['url'] : '#' : '#');
+
+	/* get car specifications */
+	$getSpecifications = get_field('car_specifications');
+	$getSpecificationsUrl = ( !empty($getSpecifications['url']) ? $getSpecifications['mime_type'] == 'application/pdf' ? $getSpecifications['url'] : '#' : '#');
 
     $content = '<div class="vehicle_display_view">
     	<div class="vdv_header">
@@ -735,7 +749,7 @@ function lao_vdp( $content, $post_id ) {
     		<ul>
     			<li><a href="#inquiry_form" class="open_inquiry_listings single_view_buttons inquire_now" data-car="'. $singleCars['post_title'] .'">Inquire Now</a></li>
     			<li><a href="#email_to_a_friend_form" class="open_email_to_a_friend_listings single_view_buttons">Email to a Friend</a></li>
-    			<li><a href="" class="single_view_buttons">Brochure</a>
+    			<li><a href="'. $getBrochureUrl .'" target="_blank" class="single_view_buttons">Brochure</a>
     			<li class="share_buttons_single"><span>Share: </span>'. do_shortcode( '[addtoany buttons="facebook,twitter,google_plus"]' ) .'
     		</ul>
     	</div>
@@ -743,7 +757,18 @@ function lao_vdp( $content, $post_id ) {
     		<div class="large">'. $galleryHolder .'</div>
     		<div class="thumb">'. $galleryThumbHolder .'</div>
     	</div>
-    	<div class="tabs">
+    	<div class="vdv_view_specifications">
+    		<a href="'. $getSpecificationsUrl .'"><i class="fa fa-car" aria-hidden="true"></i> View Specifications</a>
+    	</div>
+    </div>
+    <div id="email_to_a_friend_form" class="white-popup mfp-hide" data-form-car="">
+		' . do_shortcode( '[contact-form-7 id="171" title="Email To A Friend" car_id="'. $post_id .'"]' ) . '
+	</div>
+    ';
+
+    /*
+
+		<div class="tabs">
     		<div class="h_tabs">
     			<ul>
     				<li><a href="" data-panel="#p_one" class="active">Specifications</a></li>
@@ -856,11 +881,8 @@ function lao_vdp( $content, $post_id ) {
     			</div>-->
     		</div>
     	</div>
-    </div>
-    <div id="email_to_a_friend_form" class="white-popup mfp-hide" data-form-car="">
-		' . do_shortcode( '[contact-form-7 id="171" title="Email To A Friend" car_id="'. $post_id .'"]' ) . '
-	</div>
-    ';
+
+    */
 
     return $content;
 }

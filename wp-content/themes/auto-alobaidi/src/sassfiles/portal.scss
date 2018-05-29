@@ -1,0 +1,118 @@
+.portal_container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	background-image: url('../images/portal.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+
+	.pc_logo {
+		max-width: 992px;
+		margin: 0 auto;
+		text-align: center;
+		padding-top: 5%;
+		padding-bottom: 3%;
+	}
+
+	.maps {
+		position: relative;
+		max-width: 992px;
+		margin: 0 auto;
+		padding-left: 15px;
+		padding-right: 15px;
+
+		.map_nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+
+			padding: 0;
+			margin: 0;
+
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 2;
+			font-size: 1.6em;
+
+			&:hover {
+				background-color: #ff0000;
+			}
+
+			&.mn_left {
+				right: 100%;
+			}
+			&.mn_right {
+				left: 100%;
+			}
+		}
+
+		.pc_image {
+			position: relative;
+			h2 {
+				position: absolute;
+				padding: 0;
+				margin: 0;
+				font-weight: 700;
+				color: #ff0000;
+				left: 50%;
+				transform: translateX(-50%);
+				text-transform: uppercase;
+			}
+		}
+
+		[data-position="0"] {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 999;
+
+			.pc_image {
+				img {
+					min-width: 320px;
+				}
+				h2 {
+					top: 65%;
+					font-size: 1.7em;
+				}
+			}
+		}
+		[data-position="1"] {
+			position: absolute;
+			left: 15px;
+			z-index: 99;
+			top: 50%;
+			transform: translateY(-50%);
+
+			.pc_image {
+				max-width: 70%;
+				h2 {
+					top: 48%;
+					font-size: 1em;
+				}
+			}
+		}
+		[data-position="2"] {
+			position: absolute;
+			right: 15px;
+			z-index: 99;
+			top: 50%;
+			transform: translateY(-50%);
+
+			.pc_image {
+				margin-left: auto;
+				max-width: 70%;
+				h2 {
+					top: 48%;
+					font-size: 1em;
+				}
+			}
+		}
+	}
+
+}

@@ -1031,6 +1031,19 @@ function lao_get_accessories() {
 		}
 		?>
 			</div>
+			<div class="page_navigation">
+				<?php 
+					echo paginate_links(
+						array( 
+							'total' => $accessoriesImage->max_num_pages , 
+							'type' => 'list',
+							'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+							'next_text' => '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+						)
+					); 
+				?>
+			</div>
+			<?php wp_reset_postdata(); ?>
 		<?php
 	}
 
@@ -1162,3 +1175,56 @@ function lao_get_site_url() {
 	return ob_get_clean();
 }
 add_shortcode( 'site_url', 'lao_get_site_url' );
+
+function lao_get_picture_gallery() {
+	ob_start();
+
+	$paged = ( get_query_var('paged') ? get_query_var('paged') : 1 );
+
+	$args = array(
+		'post_type' => array('picture_gallery'),
+		'post_status' => array('publish'),
+		'posts_per_page' => 12,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		'paged' => $paged,
+	);
+
+	$getGallery = new WP_Query( $args );
+
+	if ($getGallery->have_posts()) {
+		?>
+			<div class="row gallery_images">
+		<?php
+		while ($getGallery->have_posts()) {
+			$getGallery->the_post();
+
+			?>
+
+				<div class="col-md-4 col-sm-6 col-12"><div class="gallery_image" title="<?php the_title(); ?>"><a href="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail'); ?>"></a></div></div>
+
+			<?php
+		}
+		?>
+				<div class="col-12">
+					<div class="page_navigation">
+						<?php 
+							echo paginate_links(
+								array( 
+									'total' => $getGallery->max_num_pages , 
+									'type' => 'list',
+									'prev_text' => '<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+									'next_text' => '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
+								)
+							); 
+						?>
+					</div>
+				</div>
+			</div>
+			<?php wp_reset_postdata(); ?>
+		<?php
+	}
+
+	return ob_get_clean();
+}
+add_shortcode( 'picture_gallery', 'lao_get_picture_gallery' );

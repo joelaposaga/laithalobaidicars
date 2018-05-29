@@ -1,4 +1,13 @@
 <div class="lao_lrb_container">
+	<div class="lao_social_media">
+		<?php  
+			$args = array(
+				'theme_location' => 'social',
+				'container' => ''
+			);
+			wp_nav_menu( $args );
+		?>
+	</div>
 	<div class="lang-switcher">
 		<div id="weglot_here"></div>
 		<?php /*

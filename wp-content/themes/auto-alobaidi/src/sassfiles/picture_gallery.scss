@@ -1,0 +1,33 @@
+.picture-gallery {
+	> .gallery_images {
+		margin-left: -10px;
+		margin-right: -10px;
+		margin-bottom: -20px;
+
+		> [class^="col-"] {
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-bottom: 20px;
+		}
+	}
+
+	.gallery_image {
+		position: relative;
+		width: 100%;
+		padding-top: 62.5%;
+		overflow: hidden;
+
+		img {
+			position: absolute;
+			left:-10000%; 
+			right: -10000%; 
+			top: -10000%; 
+			bottom: -10000%;
+			margin: auto auto;
+			min-width: 1000%;
+			min-height: 1000%;
+			-webkit-transform:scale(0.1);
+			transform: scale(0.1);
+		}
+	}
+}
